@@ -3,12 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+    // 使用するシーン名
     private enum SceneName
     {
         TitleScene,
         GameScene
     }
 
+    // インスペクターから遷移するシーンを選ぶ
     [SerializeField] private SceneName sceneName;
 
     void Start()
@@ -23,7 +25,8 @@ public class Button : MonoBehaviour
 
     public void SceneChange()
     {
+        // 設定したシーンに遷移する
         SceneManager.LoadScene(sceneName.ToString());
-        Debug.Log($"�V�[���`�F���W{sceneName}");
+        Debug.Log($"シーンチェンジ{sceneName}");
     }
 }
