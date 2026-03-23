@@ -24,10 +24,12 @@ public class Button : MonoBehaviour
         
     }
 
+
+    #region ボタン用関数
     public void SceneChange()
     {
         // 設定したシーンに遷移する
         SceneManager.LoadScene(sceneName.ToString());
-        Debug.Log($"シーンチェンジ{sceneName}");
     }
+    #endregion
 }
