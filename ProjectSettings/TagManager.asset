@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - ConveyorBelt
+  - MoveFloor
+  - Trap
+  - Gem
+  - DisappearingBlock
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -12,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Item
+  - NoItemCollision
   - 
   - 
   - 

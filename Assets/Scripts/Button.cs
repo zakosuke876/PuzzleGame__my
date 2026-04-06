@@ -29,7 +29,7 @@ public class Button : MonoBehaviour
     public void SceneChange()
     {
         // 設定したシーンに遷移する
-        SceneManager.LoadScene(sceneName.ToString());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName.ToString());
     }
     #endregion
 }

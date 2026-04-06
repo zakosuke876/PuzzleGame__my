@@ -60,16 +60,40 @@ public class GridManager : MonoBehaviour
     private void HandleConveyor()
     {
         // 矢印キーでの操作
-        if (Keyboard.current.upArrowKey.wasPressedThisFrame) MoveCursor(-1, 0);
-        if (Keyboard.current.downArrowKey.wasPressedThisFrame)  MoveCursor(-1, 0);
+        /*if (Keyboard.current.upArrowKey.wasPressedThisFrame) MoveCursor(-1, 0);
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame)  MoveCursor(1, 0);
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame) MoveCursor(0, -1);
-        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveCursor(0, 1);
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveCursor(0, 1);*/
+
+        if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+        {
+            MoveCursor(-1, 0);
+            Debug.Log("うえ");
+        }
+
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame)
+        {
+            MoveCursor(1, 0);
+            Debug.Log("した");
+        }
+
+        if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
+        {
+            MoveCursor(0, -1);
+            Debug.Log("ひだり");
+        }
+
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
+        {
+            MoveCursor(0, 1);
+            Debug.Log("みぎ");
+        }
 
         GameObject obj = GetSelectObject();
         if (obj != null && obj.CompareTag(Tags.ConveyorBelt))  // A/Dキーはベルトコンベアの時だけ有効にする
         {
-            // A/Dキーでコンベアの向きを変更
-            //if (Keyboard.current.aKey.wasPressedThisFrame)
+            if (Keyboard.current.aKey.wasPressedThisFrame) ChangeConveyorDirection(false);
+            if (Keyboard.current.dKey.wasPressedThisFrame) ChangeConveyorDirection(true);
         }
     }
 
@@ -84,11 +108,11 @@ public class GridManager : MonoBehaviour
 
         if (obj != null && obj.CompareTag(Tags.MoveFloor))
         {
-            if (Keyboard.current.wKey.wasPressedThisFrame)
+            if (Keyboard.current.wKey.IsPressed())
             {
                 move = Vector2.up;
             }
-            else if (Keyboard.current.sKey.wasPressedThisFrame)
+            else if (Keyboard.current.sKey.IsPressed())
             {
                 move = Vector2.down;
             }
@@ -151,7 +175,7 @@ public class GridManager : MonoBehaviour
 
         if (obj.TryGetComponent<Conveyor>(out var conveyor))
         {
-            conveyor.MoveRight = moveRight;
+            conveyor.IsMovingRight = moveRight;
         }
     }
 
@@ -167,7 +191,7 @@ public class GridManager : MonoBehaviour
 
         if (obj.TryGetComponent<Renderer>(out var renderer))
         {
-            renderer.material.color = Color.yellow;
+            renderer.material.color = Color.red;
         }
     }
 
