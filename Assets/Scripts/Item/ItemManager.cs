@@ -33,7 +33,7 @@ public class ItemManager : MonoBehaviour
         {
             if (gem == null) continue;
 
-            // アイテム取得イベントを購読
+            // Gem取得時にカウント
             gem.OnCollected += CollectGem;
             gem.Initialize();
         }
@@ -52,7 +52,6 @@ public class ItemManager : MonoBehaviour
 
             // アイテム取得の購読解除
             gem.OnCollected -= CollectGem;
-            gem.OnCollected -= gemUi.UpdateGemColor;
         }
     }
 

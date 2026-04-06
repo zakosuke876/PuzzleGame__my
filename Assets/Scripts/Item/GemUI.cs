@@ -7,6 +7,11 @@ public class GemUI : MonoBehaviour
 {
     [SerializeField] private Image[] gemImages;
 
+    private ItemManager ItemManager;
+
+    /// <summary>
+    /// イベントの登録・UI表示の初期化
+    /// </summary>
     public void Initialize(ItemManager itemManager)
     {
         // Gem取得時にUI更新を行う
@@ -63,5 +68,14 @@ public class GemUI : MonoBehaviour
 
                 break;
         }
+    }
+
+    private void OnDisable()
+    {
+        if (ItemManager == null) return;
+
+        // イベント登録解除
+        ItemManager.OnGemCollected -= UpdateGemColor;
+        ItemManager.OnGemReset -= ResetGemColor;
     }
 }
