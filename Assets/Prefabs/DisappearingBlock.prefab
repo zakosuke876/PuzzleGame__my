@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3053948913109023510}
   - component: {fileID: 2650627306304911332}
   - component: {fileID: 6307910187752914089}
+  - component: {fileID: 7930272873155976764}
   m_Layer: 0
   m_Name: DisappearingBlock
   m_TagString: DisappearingBlock
@@ -137,3 +138,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7930272873155976764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623951280325299621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
+  disappearTIme: 0.8
+  disappearing: 0

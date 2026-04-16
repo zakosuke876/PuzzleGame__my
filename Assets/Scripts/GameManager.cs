@@ -7,6 +7,8 @@ public enum GameState
     Title,
     Game,
     Pause,
+    Respawn,
+    GameClear,
     GameOver
 }
 
@@ -50,14 +52,36 @@ public class GameManager : MonoBehaviour
         {
             ballManager.RespawnBall();
         }
+
+        if (Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            ChangeState(GameState.Pause);
+        }
+
+        if (Keyboard.current.gKey.wasPressedThisFrame)
+        {
+            ChangeState(GameState.Game);
+        }
+
+        if (Keyboard.current.oKey.wasPressedThisFrame)
+        {
+            ChangeState(GameState.GameOver);
+        }
     }
 
     private void Initialize()
     {
-        itemManager.Initialize();
-        ballManager.Initialize();
-        gimmickManager.Initialize();
-        ballManager.OnBallDead += HandleBallDead;
+        try
+        {
+            itemManager.Initialize();
+            ballManager.Initialize();
+            gimmickManager.Initialize();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"初期化失敗:{e.Message}");
+        }
+
         ChangeState(currentState);
     }
 
@@ -67,17 +91,10 @@ public class GameManager : MonoBehaviour
         OnStateChanged?.Invoke(state);
     }
 
-
-    /// <summary>
-    /// ゲームステート(GameOverに変更)
-    /// </summary>
-    private void HandleBallDead()
+    public void Retry()
     {
-        ChangeState(GameState.GameOver);
-    }
+        ChangeState(GameState.Game);
 
-    private void OnDestroy()
-    {
-        ballManager.OnBallDead -= HandleBallDead;
+        ballManager.Retry();
     }
 }

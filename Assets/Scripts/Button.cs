@@ -8,28 +8,23 @@ public class Button : MonoBehaviour
     private enum SceneName
     {
         TitleScene,
-        GameScene
+        TutorialScene,
+        Stage1
     }
 
     // インスペクターから遷移するシーンを選ぶ
     [SerializeField] private SceneName sceneName;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
 
     #region ボタン用関数
     public void SceneChange()
     {
         // 設定したシーンに遷移する
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName.ToString());
+    }
+
+    public void GameRetry()
+    {
+        GameManager.Instance.Retry();
     }
     #endregion
 }

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1fc06ea56d4c64385f330d0621f00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ball
-  rb: {fileID: 8682407693229824883}
   currentConveyor: {fileID: 0}
   ballManager: {fileID: 0}
-  resetTriggerPosY: 4
+  resetTriggerPosY: -10
+  destroyDuration: 0.3

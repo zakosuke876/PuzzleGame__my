@@ -1,4 +1,3 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
@@ -8,6 +7,11 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private Gems[] gems;
 
     private int collectedGemCount = 0;
+
+    public int CollectedGemCount
+    {
+        get { return collectedGemCount; }
+    }
 
     /// <summary>
     /// Gemが取得された時に発火するイベント
@@ -43,6 +47,13 @@ public class ItemManager : MonoBehaviour
 
     private void OnDisable()
     {
+
+        if (GameManager.Instance == null)
+        {
+            Debug.Log("GameManagerがありません");
+            return;
+        }
+
         // ゲームステート変更の購読解除
         GameManager.Instance.OnStateChanged -= HandleStateChange;
 
@@ -78,6 +89,14 @@ public class ItemManager : MonoBehaviour
 
                 break;
 
+            case GameState.Respawn:
+
+                ResetAll();
+
+                gemUi.ResetGemColor();
+
+                break;
+
             case GameState.GameOver:
 
                 ResetAll();
@@ -99,6 +118,7 @@ public class ItemManager : MonoBehaviour
     {
         collectedGemCount++;
         OnGemCollected?.Invoke(type);
+        Debug.Log(collectedGemCount);
     }
 
     /// <summary>

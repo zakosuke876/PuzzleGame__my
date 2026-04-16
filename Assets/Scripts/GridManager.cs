@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using System;
 
 public class GridManager : MonoBehaviour
 {
@@ -8,32 +9,27 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int rows = 2; // 行
     [SerializeField] private int cols = 3; // 列
 
-    [Header("オブジェクト"), SerializeField]
-    private List<GameObject> objects;
-
-    [Header("床オブジェクトの移動速度"), SerializeField]
-    private float floorMoveSpeed = 0f;
-
     // グリッド座標(行、列)をキーにGameObjectを管理するDictionary
     private Dictionary<Vector2Int, GameObject> grid;
 
+    [Header("オブジェクト"), SerializeField]
+    private List<GameObject> objects;
+
     //現在選択中の座標
     private Vector2Int currentPos = Vector2Int.zero;
-    void Start()
+
+    // 選択中のオブジェクトが変わった時に発火するイベント
+    public event Action<GameObject> OnSelectedObjectChanged;
+
+    private void Start()
     {
         InitializeGrid();
     }
 
-    void Update()
+    private void Update()
     {
-        HandleConveyor();
-        HandleMoveFloor();
+        HandleCursor();
     }
-
-    /// <summary>
-    /// objectsリストからグリッド用Dictionaryを生成する
-    /// null要素はスキップする
-    /// </summary>
     private void InitializeGrid()
     {
         grid = new Dictionary<Vector2Int, GameObject>();
@@ -51,135 +47,70 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        HighlightSelected(); // 最初の位置をハイライト
+        HighlightSelected();
+
+        OnSelectedObjectChanged?.Invoke(GetSelectObject());
     }
 
+
+    
     /// <summary>
-    /// 矢印キーでカーソル移動、A/Dキーでベルトコンベアの向きを変更
-    /// </summary>
-    private void HandleConveyor()
-    {
-        // 矢印キーでの操作
-        /*if (Keyboard.current.upArrowKey.wasPressedThisFrame) MoveCursor(-1, 0);
-        if (Keyboard.current.downArrowKey.wasPressedThisFrame)  MoveCursor(1, 0);
-        if (Keyboard.current.leftArrowKey.wasPressedThisFrame) MoveCursor(0, -1);
-        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveCursor(0, 1);*/
-
-        if (Keyboard.current.upArrowKey.wasPressedThisFrame)
-        {
-            MoveCursor(-1, 0);
-            Debug.Log("うえ");
-        }
-
-        if (Keyboard.current.downArrowKey.wasPressedThisFrame)
-        {
-            MoveCursor(1, 0);
-            Debug.Log("した");
-        }
-
-        if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
-        {
-            MoveCursor(0, -1);
-            Debug.Log("ひだり");
-        }
-
-        if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
-        {
-            MoveCursor(0, 1);
-            Debug.Log("みぎ");
-        }
-
-        GameObject obj = GetSelectObject();
-        if (obj != null && obj.CompareTag(Tags.ConveyorBelt))  // A/Dキーはベルトコンベアの時だけ有効にする
-        {
-            if (Keyboard.current.aKey.wasPressedThisFrame) ChangeConveyorDirection(false);
-            if (Keyboard.current.dKey.wasPressedThisFrame) ChangeConveyorDirection(true);
-        }
-    }
-
-    /// <summary>
-    /// W/Sキーで選択中の床を上下に移動
-    /// </summary>
-    private void HandleMoveFloor()
-    {
-        GameObject obj = GetSelectObject();
-
-        Vector2 move = Vector2.zero;
-
-        if (obj != null && obj.CompareTag(Tags.MoveFloor))
-        {
-            if (Keyboard.current.wKey.IsPressed())
-            {
-                move = Vector2.up;
-            }
-            else if (Keyboard.current.sKey.IsPressed())
-            {
-                move = Vector2.down;
-            }
-
-            if (move != Vector2.zero)
-            {
-                obj.transform.position += (Vector3)(move * floorMoveSpeed * Time.deltaTime);
-            }
-        }
-    }
-
-    /// <summary>
-    /// 選択中のオブジェクトを取得
-    /// </summary>
-    GameObject GetSelectObject()
-    {
-        if (grid.TryGetValue(currentPos, out GameObject obj))
-        {
-            return obj;
-        }
-        return null;
-    }
-
-    /// <summary>
-    /// カーソル移動
+    /// カーソルを移動し、選択オブジェクトの変更を通知をする
     /// </summary>
     private void MoveCursor(int rowPower, int colPower)
     {
         ResetHighlight();
 
         Vector2Int direction = new Vector2Int(rowPower, colPower);
-        Vector2Int newpos = currentPos + direction;
+        Vector2Int newPos = currentPos + direction;
 
-        while (IsInBounds(newpos))
+        while (IsInBounds(newPos))
         {
-            if (grid.ContainsKey(newpos))
+            if (grid.ContainsKey(newPos))
             {
-                currentPos = newpos;
+                currentPos = newPos;
                 break;
             }
-            newpos += direction;
+            newPos += direction;
         }
 
         HighlightSelected();
-    }
 
-    bool IsInBounds(Vector2Int pos)
-    {
-        return pos.x >= 0 && pos.x < rows && pos.y >= 0 && pos.y < cols;
+        OnSelectedObjectChanged?.Invoke(GetSelectObject());
     }
 
     /// <summary>
-    /// コンベアの向きを変更 (trueなら右向き、falseなら左向き)
+    /// 矢印キーでカーソルを移動する
     /// </summary>
-    /// 
-    private void ChangeConveyorDirection(bool moveRight)
+    private void HandleCursor()
     {
-        GameObject obj = GetSelectObject();
-        if (obj == null) return;
-
-        if (obj.TryGetComponent<Conveyor>(out var conveyor))
-        {
-            conveyor.IsMovingRight = moveRight;
-        }
+        if (Keyboard.current.upArrowKey.wasPressedThisFrame) MoveCursor(-1, 0);
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame) MoveCursor(1, 0);
+        if (Keyboard.current.leftArrowKey.wasPressedThisFrame) MoveCursor(0, -1);
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveCursor(0, 1);
     }
 
+    /// <summary>
+    /// 選択中のオブジェクトを取得する
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetSelectObject()
+    {
+        if (grid.TryGetValue(currentPos, out GameObject obj))
+        {
+            return obj;
+        }
 
+        return null;
+    }
+
+    /// <summary>
+    /// グリッドの範囲内か銅かを判断する
+    /// </summary>
+    private bool IsInBounds(Vector2Int pos)
+    {
+        return pos.x >= 0 && pos.x < rows && pos.y >= 0 && pos.y < cols;
+    }
 
     /// <summary>
     /// 選択しているオブジェクトの色を変更

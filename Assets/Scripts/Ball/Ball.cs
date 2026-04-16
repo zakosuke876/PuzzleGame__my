@@ -12,9 +12,14 @@ public class Ball : MonoBehaviour
     [SerializeField] private BallManager ballManager;
 
     /// <summary>
-    /// ゲームオーバー時に発火するイベント
+    /// ボールリスポーン時に発火するイベント
     /// </summary>
     public event System.Action OnBallRespawn;
+
+    /// <summary>
+    /// ゲームオーバー時に発火するイベント
+    /// </summary>
+    public event System.Action OnBallGameOver;
 
     [Header("この座標より下に落ちたらリセット"), SerializeField]
     private float resetTriggerPosY;
@@ -106,14 +111,14 @@ public class Ball : MonoBehaviour
 
         if (collision.gameObject.CompareTag(Tags.Trap))
         {
-            // ボールのリスポーンイベントを発火
-            OnBallRespawn?.Invoke();
+            // ボールのゲームオーバーイベントを発火
+            OnBallGameOver?.Invoke();
         }
 
-        /*if (collision.gameObject.TryGetComponent(out DisappearingBlock block))
+        if (collision.gameObject.TryGetComponent(out DisappearingBlock block))
         {
             block.StartDisappearing();
-        }*/
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -129,13 +134,6 @@ public class Ball : MonoBehaviour
 
     private void PositionReset()
     {
-        /*GameManager.Instance.GameOver();
-
-        if (ballManager != null)
-        {
-            ballManager.SpawnBall();
-        }
-
-        DestroyObject();*/
+        OnBallGameOver?.Invoke();
     }
 }

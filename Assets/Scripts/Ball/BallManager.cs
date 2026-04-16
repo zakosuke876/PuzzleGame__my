@@ -37,13 +37,29 @@ public class BallManager : MonoBehaviour
     {
         // ステート変更を購読
         GameManager.Instance.OnStateChanged += HandleStateChange;
+
+        isRespawning = false;
+
         SpawnBall();
     }
 
     private void OnDisable()
     {
+        if (GameManager.Instance == null)
+        {
+            Debug.Log("GameManagerがありません");
+            return;
+        }
+
         // ステート変更の購読解除
         GameManager.Instance.OnStateChanged -= HandleStateChange;
+
+        if (currentBall != null )
+        {
+            currentBall.OnBallRespawn -= RespawnBall;
+
+            currentBall.OnBallGameOver -= GameOver;
+        }
     }
 
     /// <summary>
@@ -61,13 +77,17 @@ public class BallManager : MonoBehaviour
 
             case GameState.Game:
 
-                //Debug.Log("BallManager.State.Game");
+                Debug.Log("BallManager.State.Game");
 
                 break;
 
             case GameState.Pause:
 
                 //Debug.Log("BallManager.State.Pause");
+
+                break;
+
+            case GameState.Respawn:
 
                 break;
 
@@ -96,6 +116,10 @@ public class BallManager : MonoBehaviour
 
         currentBall.OnBallRespawn += RespawnBall;
 
+
+        currentBall.OnBallGameOver += GameOver;
+
+
         currentBall.Initialize(this);
 
         currentBall.PrepareSpawn();
@@ -115,11 +139,14 @@ public class BallManager : MonoBehaviour
                      });
     }     
 
-    public void DestroyAnimation()
+    public void DestroyAnimation(Action onComplete = null)
     {
         currentBall.DisablePhysics();
 
         currentBall.OnBallRespawn -= RespawnBall;
+
+
+        currentBall.OnBallGameOver -= GameOver;
 
         // 破壊アニメーション開始
         currentBall.transform.DOScale(Vector3.zero, destroyDuration)
@@ -127,24 +154,46 @@ public class BallManager : MonoBehaviour
                    .OnComplete(() =>
                    {
                        Destroy(currentBall.gameObject);
-                       SpawnBall();
+                       onComplete?.Invoke();
                    });
     }
 
+    /// <summary>
+    /// ゲーム状態をリスポーンに変更
+    /// ボールを再生成
+    /// </summary>
     public void RespawnBall()
     {
         if (currentBall == null) return;
 
         if (isRespawning) return;
 
+        isRespawning = true;
+
         currentBall.gameObject.layer = LayerMask.NameToLayer(Layers.NoItemCollision);
+
+        GameManager.Instance.ChangeState(GameState.Respawn);
+
+        DestroyAnimation(SpawnBall);
+    }
+
+    public void GameOver()
+    {
+        if (currentBall == null) return;
+
+        if (isRespawning) return;
 
         isRespawning = true;
 
         GameManager.Instance.ChangeState(GameState.GameOver);
 
-        OnBallDead?.Invoke();
-
         DestroyAnimation();
+    }
+
+    public void Retry()
+    {
+        isRespawning = false;
+
+        SpawnBall();
     }
 }
