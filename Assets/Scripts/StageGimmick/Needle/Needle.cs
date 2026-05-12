@@ -49,7 +49,7 @@ public class Needle : MonoBehaviour
     private bool isInitialized = false;
 
     /// <summary>
-    /// 初期化済みかどうかを外から参照する
+    /// 初期化済みかどうかを外部から参照する
     /// </summary>
     public bool IsInitialized
     {
@@ -120,7 +120,7 @@ public class Needle : MonoBehaviour
     }
 
     /// <summary>
-    /// オブジェクト破棄時にTweenを全停止してメモリリークを防ぐ
+    /// オブジェクト破棄時にTweenを全停止
     /// </summary>
     private void OnDestroy()
     {

@@ -11,13 +11,14 @@ public class NeedleManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (needle == null) continue;
 
+            // ˆê“x‚¾‚¯‰Šú‰»‚·‚é
             if (!needle.IsInitialized)
             {
                 needle.Initialize();
 
                 needle.Move();
             }
-            else
+            else // 2‰ñ–ÚˆÈ~‚Íó‘Ô‚¾‚¯ÄŠJ‚µÄ¶¬‚ğ–h‚®
             {
                 needle.DoPlay();
             }

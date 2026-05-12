@@ -5,11 +5,7 @@ public class MoveFloor : MonoBehaviour
     [SerializeField] private float maxPosY = 0;
 
     [SerializeField] private float minPosY = 0;
-    void Start()
-    {
-        
-    }
-
+    
     void Update()
     {
         ClampYPosition();

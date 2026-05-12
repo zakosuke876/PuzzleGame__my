@@ -11,12 +11,13 @@ public class SawManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (saw == null) continue;
 
+            // ˆê“x‚¾‚¯‰Šú‰»‚·‚é
             if (!saw.IsInitialized)
             {
                 saw.Initialize();
                 saw.SawMove();
             }
-            else
+            else // 2‰ñ–ÚˆÈ~‚Íó‘Ô‚¾‚¯ÄŠJ‚µÄ¶¬‚ğ–h‚®
             {
                 saw.DoPlay();
             }

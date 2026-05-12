@@ -23,7 +23,13 @@ public class ConveyorController : MonoBehaviour
 
     private void Initialize()
     {
+        // 選択オブジェクト変更イベント購読
         gridManager.OnSelectedObjectChanged += OnSelectedChanged;
+    }
+
+    private void OnDisable()
+    {
+        gridManager.OnSelectedObjectChanged -= OnSelectedChanged;
     }
 
     /// <summary>

@@ -7,6 +7,7 @@ public class MoveFloorController : MonoBehaviour
 
     [SerializeField] private float floorMoveSpeed = 0f;
 
+    // 現在選択されているオブジェクト
     private GameObject selectedObject;
 
     // MpveFloor移動時に鳴らす効果音
@@ -24,8 +25,13 @@ public class MoveFloorController : MonoBehaviour
 
     private void Initialize()
     {
-        // 選択オブジェクト変更うイベント購読
+        // 選択オブジェクト変更イベント購読
         gridManager.OnSelectedObjectChanged += OnSelectedChanged;
+    }
+
+    private void OnDisable()
+    {
+        gridManager.OnSelectedObjectChanged -= OnSelectedChanged;
     }
 
     /// <summary>

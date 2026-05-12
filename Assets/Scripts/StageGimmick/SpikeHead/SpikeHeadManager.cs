@@ -11,7 +11,7 @@ public class SpikeHeadManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (spikeHead == null) continue;
 
-            // 1“x‚¾‚¯‰Šú‰»ˆ—Às
+            // ˆê“x‚¾‚¯‰Šú‰»‚·‚é
             if (!spikeHead.IsInitialized)
             {
                 spikeHead.Initialize();

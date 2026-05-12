@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GimmickManager : MonoBehaviour
@@ -7,12 +8,19 @@ public class GimmickManager : MonoBehaviour
     // IGimmickManagerを実装したコンポーネントを子から集めて保持するリスト
     private List<IGimmickManager> managers = new List<IGimmickManager>();
 
+    // IResettableを実装したコンポーネントを子から集めて保持するリスト
+    private List<IResettable> resetManagers = new List<IResettable>();
+
     /// <summary>
     /// ゲームステートのイベントを購読する
     /// </summary>
     public void Initialize()
     {
+        // 子オブジェクト内のIGimmickManager実装を全て取得して登録
         managers.AddRange(GetComponentsInChildren<IGimmickManager>());
+
+        // 子オブジェクト内のIResettabler実装を全て取得して登録
+        resetManagers.AddRange(GetComponentsInChildren<IResettable>());
 
         GameManager.Instance.OnStateChanged += HandleStateChange;
     }
@@ -86,7 +94,7 @@ public class GimmickManager : MonoBehaviour
     /// </summary>
     public void OnGameReset()
     {
-        foreach (IResettable resettable in managers.OfType<IResettable>())
+        foreach (IResettable resettable in resetManagers.OfType<IResettable>())
         {
             resettable.OnGameReset();
         }

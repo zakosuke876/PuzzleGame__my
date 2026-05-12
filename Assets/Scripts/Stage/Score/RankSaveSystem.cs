@@ -10,6 +10,7 @@ public class RankSaveSystem : MonoBehaviour
     /// </summary>
     public void SaveRank(Rank rank, int stageNumber)
     {
+        // •Û‘¶‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Îˆ—‚·‚é
         if(!PlayerPrefs.HasKey(saveKey + stageNumber))
         {
             // ‰‰ñ‚Í•K‚¸•Û‘¶‚·‚é

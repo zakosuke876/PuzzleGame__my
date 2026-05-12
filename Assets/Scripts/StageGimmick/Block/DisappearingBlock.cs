@@ -37,6 +37,7 @@ public class DisappearingBlock : MonoBehaviour
         {
             timer += Time.deltaTime;
 
+            // Žw’èŽžŠÔ‚ð’´‚¦‚½ê‡
             if (timer > disappearTIme)
             {
                 HideBlock();
@@ -59,11 +60,13 @@ public class DisappearingBlock : MonoBehaviour
     {
         if (col != null)
         {
+            // “–‚½‚è”»’è‚ð–³‚­‚·
             col.enabled = false;
         }
 
         if (spriteRenderer != null)
         {
+            // ”ñ•\Ž¦‚É‚·‚é
             spriteRenderer.enabled = false;
         }
 

@@ -68,13 +68,16 @@ public class SpikeHead : MonoBehaviour
                 .SetLoops(-1);
     }
 
+    /// <summary>
+    /// オブジェクト破棄時にTweenを全停止
+    /// </summary>
     void OnDestroy()
     {
         transform.DOKill();
     }
 
     /// <summary>
-    /// ギミック動作を再開
+    /// 一時停止中のシーケンスを再開する
     /// </summary>
     public void DoPlay()
     {
@@ -82,13 +85,16 @@ public class SpikeHead : MonoBehaviour
     }
 
     /// <summary>
-    /// ギミック動作を一時停止
+    /// シーケンスを一時停止する
     /// </summary>
     public void DoStop()
     {
         seq?.Pause();
     }
 
+    /// <summary>
+    /// ギミックをリセットする（Tweenを破棄し、初期位置に戻す）
+    /// </summary>
     public void ResetGimmick()
     {
         seq?.Kill();
