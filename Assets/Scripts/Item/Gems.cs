@@ -11,21 +11,17 @@ public class Gems : MonoBehaviour
         Yellow
     }
 
-    // Gemの種類
     [SerializeField] private GemType gemType;
 
-    // Gemの表示/非表示を制御するRenderer
     [SerializeField] private Renderer gemRenderer;
 
     // リセット時に使う初期位置
     private Vector3 initialPosition;
 
-    // 取得済みかどうか
     private bool isCollected = false;
 
     /// <summary>
     /// Gem取得時に発火するイベント
-    /// 引数：取得されたGemの種類
     /// </summary>
     public event System.Action<GemType> OnCollected;
 
@@ -51,6 +47,7 @@ public class Gems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Ballに当たったかつ取得済みでない場合
         if (collision.CompareTag(Tags.Ball) && !isCollected)
         {
             CollectItem();

@@ -30,6 +30,10 @@ public class GridManager : MonoBehaviour
     {
         HandleCursor();
     }
+
+    /// <summary>
+    /// グリッドを初期化する(座標とオブジェクトを対応させる)
+    /// </summary>
     private void InitializeGrid()
     {
         grid = new Dictionary<Vector2Int, GameObject>();
@@ -39,7 +43,8 @@ public class GridManager : MonoBehaviour
         {
             for (int c = 0; c < cols; c++) // 列ループ
             {
-                if (index < objects.Count && objects[index] != null) // 配列の範囲内でかつnullでない場合登録
+                // 配列の範囲内でかつnullでない場合登録
+                if (index < objects.Count && objects[index] != null)
                 {
                     grid[new Vector2Int(r, c)] = objects[index];
                 }
@@ -49,13 +54,14 @@ public class GridManager : MonoBehaviour
 
         HighlightSelected();
 
+        // 選択オブジェクト変更を通知
         OnSelectedObjectChanged?.Invoke(GetSelectObject());
     }
 
 
     
     /// <summary>
-    /// カーソルを移動し、選択オブジェクトの変更を通知をする
+    /// カーソルを移動し、選択オブジェクトの変更を通知する
     /// </summary>
     private void MoveCursor(int rowPower, int colPower)
     {
@@ -64,6 +70,7 @@ public class GridManager : MonoBehaviour
         Vector2Int direction = new Vector2Int(rowPower, colPower);
         Vector2Int newPos = currentPos + direction;
 
+        // 登録されているオブジェクトが見つかるまで進む
         while (IsInBounds(newPos))
         {
             if (grid.ContainsKey(newPos))
@@ -105,7 +112,7 @@ public class GridManager : MonoBehaviour
     }
 
     /// <summary>
-    /// グリッドの範囲内か銅かを判断する
+    /// グリッドの範囲内かどうかを判定する
     /// </summary>
     private bool IsInBounds(Vector2Int pos)
     {

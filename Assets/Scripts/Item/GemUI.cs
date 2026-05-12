@@ -20,7 +20,7 @@ public class GemUI : MonoBehaviour
     /// </summary>
     public void Initialize(ItemManager itemManager)
     {
-        // Gem取得時にUI更新を行う
+        // Gem取得時にUIの色を更新する
         itemManager.OnGemCollected += UpdateGemColor;
 
         // UI表示をリセットする
@@ -60,6 +60,7 @@ public class GemUI : MonoBehaviour
         {
             case GemType.Red:
 
+                // 色を付けて表示状態にする
                 gemImages[0].color = Color.white;
 
                 break;

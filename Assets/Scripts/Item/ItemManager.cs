@@ -6,6 +6,7 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] private Gems[] gems;
 
+    /// 取得したGem数
     private int collectedGemCount = 0;
 
     public int CollectedGemCount
@@ -15,7 +16,6 @@ public class ItemManager : MonoBehaviour
 
     /// <summary>
     /// Gemが取得された時に発火するイベント
-    /// 引数：取得されたGemの種類
     /// </summary>
     public event System.Action<Gems.GemType> OnGemCollected;
 
@@ -37,7 +37,7 @@ public class ItemManager : MonoBehaviour
         {
             if (gem == null) continue;
 
-            // Gem取得時にカウント
+            // Gem取得イベントを購読
             gem.OnCollected += CollectGem;
             gem.Initialize();
         }
@@ -47,7 +47,6 @@ public class ItemManager : MonoBehaviour
 
     private void OnDisable()
     {
-
         if (GameManager.Instance == null)
         {
             return;
@@ -60,7 +59,7 @@ public class ItemManager : MonoBehaviour
         {
             if (gem == null) continue;
 
-            // アイテム取得の購読解除
+            // Gem取得の購読解除
             gem.OnCollected -= CollectGem;
         }
     }
@@ -134,6 +133,8 @@ public class ItemManager : MonoBehaviour
     {
         ResetAllGems();
         ResetGemCount();
+        
+        // Gemリセットを通知
         OnGemReset?.Invoke();
     }
 

@@ -31,6 +31,7 @@ public class BGMManager : MonoBehaviour
     {
         if (bgmClip == null) return;
 
+        // ƒvƒŒƒC’†‚ÌBGM‚ğÄ¶
         audioSource.clip = bgmClip;
         audioSource.volume = volume;
         audioSource.loop = true;
@@ -50,6 +51,7 @@ public class BGMManager : MonoBehaviour
 
             case GameState.Game:
 
+                // BGM‚ªÄ¶’†‚Å‚È‚¢ê‡Ä¶‚·‚é
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
