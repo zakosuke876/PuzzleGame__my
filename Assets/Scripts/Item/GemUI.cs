@@ -9,6 +9,12 @@ public class GemUI : MonoBehaviour
 
     private ItemManager ItemManager;
 
+    private void Start()
+    {
+        // GemColorをリセット
+        InitializeGemColor();
+    }
+
     /// <summary>
     /// イベントの登録・UI表示の初期化
     /// </summary>

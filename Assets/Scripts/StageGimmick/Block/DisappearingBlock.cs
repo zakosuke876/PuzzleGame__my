@@ -17,8 +17,15 @@ public class DisappearingBlock : MonoBehaviour
     // 当たり判定の有効・無効を制御
     [SerializeField] private Collider2D col;
 
+    // ブロックが消えた(壊れた)時に鳴らす効果音
+    [SerializeField] private AudioClip audioClip;
+    private AudioSource audioSource;
+    [Header("SEの音量"), SerializeField] private float volume = 1f;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         col = GetComponent<Collider2D>();
@@ -60,6 +67,7 @@ public class DisappearingBlock : MonoBehaviour
             spriteRenderer.enabled = false;
         }
 
+        audioSource.PlayOneShot(audioClip, volume);
         disappearing = false;
         timer = 0f;
     }

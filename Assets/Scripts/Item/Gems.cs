@@ -29,6 +29,16 @@ public class Gems : MonoBehaviour
     /// </summary>
     public event System.Action<GemType> OnCollected;
 
+    // アイテム取得時に鳴らす効果音
+    [SerializeField] private AudioClip audioClip;
+    private AudioSource audioSource;
+    [Header("SEの音量"), SerializeField] private float volume = 1f;
+
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     /// <summary>
     /// 初期化(初期位置の保存・Gemの状態をリセット)
     /// </summary>
@@ -54,6 +64,8 @@ public class Gems : MonoBehaviour
     private void CollectItem()
     {
         isCollected = true;
+
+        audioSource.PlayOneShot(audioClip, volume);
 
         // 非表示状態にする
         gemRenderer.enabled = false;

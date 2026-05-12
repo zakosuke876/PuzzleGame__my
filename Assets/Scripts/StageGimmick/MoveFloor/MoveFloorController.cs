@@ -9,19 +9,28 @@ public class MoveFloorController : MonoBehaviour
 
     private GameObject selectedObject;
 
-    /// <summary>
-    /// Startより先に実行されるAwakeでイベントを購読する
-    /// </summary>
+    // MpveFloor移動時に鳴らす効果音
+    [SerializeField] private AudioClip audioClip;
+    private AudioSource audioSource;
+    [Header("SEの音量"), SerializeField] private float volume = 1f;
+
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         Initialize();
     }
 
     private void Initialize()
     {
+        // 選択オブジェクト変更うイベント購読
         gridManager.OnSelectedObjectChanged += OnSelectedChanged;
     }
 
+    /// <summary>
+    /// 選択オブジェクトが変わった時に呼ばれる
+    /// </summary>
     public void OnSelectedChanged(GameObject obj)
     {
         selectedObject = obj;
@@ -33,6 +42,7 @@ public class MoveFloorController : MonoBehaviour
 
         if (!selectedObject.CompareTag(Tags.MoveFloor)) return;
 
+        // W = 上方向, S = 下方向
         Vector2 move = Vector2.zero;
         if (Keyboard.current.wKey.IsPressed()) move = Vector2.up;
         if (Keyboard.current.sKey.IsPressed()) move = Vector2.down;
@@ -41,6 +51,9 @@ public class MoveFloorController : MonoBehaviour
         {
             Vector3 localMove = (Vector3)(move * floorMoveSpeed * Time.deltaTime);
             selectedObject.transform.position += localMove;
+
+            if (audioSource.isPlaying) return;
+            audioSource.PlayOneShot(audioClip, volume);
         }
     }
 }

@@ -28,8 +28,6 @@ public class SpikeHead : MonoBehaviour
     // ZÀ•W‚ğ•Û
     private float originalZ;
 
-    private bool isGame = false;
-
     // ‰Šú‰»Ï‚İƒtƒ‰ƒO
     private bool isInitialized = false;
 
@@ -46,8 +44,6 @@ public class SpikeHead : MonoBehaviour
     /// </summary>
     public void Initialize()
     {
-        isGame = true;
-
         // ‰Šú‰»Ï‚İó‘Ô‚É‚·‚é
         isInitialized = true;
 
@@ -83,7 +79,6 @@ public class SpikeHead : MonoBehaviour
     public void DoPlay()
     {
         seq?.Play();
-        isGame = true;
     }
 
     /// <summary>
@@ -92,7 +87,6 @@ public class SpikeHead : MonoBehaviour
     public void DoStop()
     {
         seq?.Pause();
-        isGame = false;
     }
 
     public void ResetGimmick()
@@ -102,8 +96,6 @@ public class SpikeHead : MonoBehaviour
         seq = null;
 
         isInitialized = false;
-
-        isGame = false;
 
         transform.position = new Vector3(startPos.x, startPos.y, originalZ);
     }

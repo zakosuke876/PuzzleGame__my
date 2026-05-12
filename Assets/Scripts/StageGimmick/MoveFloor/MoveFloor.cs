@@ -15,6 +15,7 @@ public class MoveFloor : MonoBehaviour
         ClampYPosition();
     }
 
+    // ˆÚ“®‚Å‚«‚é”ÍˆÍ‚ğ§ŒÀ
     private void ClampYPosition()
     {
         Vector3 pos = transform.localPosition;

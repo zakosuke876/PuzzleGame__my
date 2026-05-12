@@ -45,25 +45,27 @@ public class Needle : MonoBehaviour
     // Z座標を保持
     private float originalZ;
 
-    private bool isGame = false;
-
     // 初期化済みフラグ
     private bool isInitialized = false;
 
+    /// <summary>
+    /// 初期化済みかどうかを外から参照する
+    /// </summary>
     public bool IsInitialized
     {
         get { return isInitialized; }
     }
 
+    // DOTweenのシーケンス(縦・横それぞれ保持して外部から制御する)
     private Sequence verticalSeq;
 
     private Sequence horizontalSeq;
 
-
+    /// <summary>
+    /// 針の初期化処理
+    /// </summary>
     public void Initialize()
     {
-        isGame = true;
-
         // 初期化済み状態にする
         isInitialized = true;
 
@@ -71,6 +73,9 @@ public class Needle : MonoBehaviour
         originalZ = transform.position.z;
     }
 
+    /// <summary>
+    /// isVerticalの設定に応じて縦または横移動する
+    /// </summary>
     public void Move()
     {
         if (isVertical)
@@ -83,6 +88,9 @@ public class Needle : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 横移動のTweenシーケンスを作成してループ再生する
+    /// </summary>
     public void MoveNeedleHorizontal()
     {
         transform.position = new Vector3(horizontalStartPos.x, horizontalStartPos.y, originalZ);
@@ -96,6 +104,9 @@ public class Needle : MonoBehaviour
                            .SetLoops(-1);
     }
 
+    /// <summary>
+    /// 縦移動のTweenシーケンスを作成してループ再生する
+    /// </summary>
     public void MoveNeedleVertical()
     {
         transform.position = new Vector3(verticalStartPos.x, verticalStartPos.y, originalZ);
@@ -108,11 +119,17 @@ public class Needle : MonoBehaviour
                          .SetLoops(-1);
     }
 
+    /// <summary>
+    /// オブジェクト破棄時にTweenを全停止してメモリリークを防ぐ
+    /// </summary>
     private void OnDestroy()
     {
         transform.DOKill();
     }
 
+    /// <summary>
+    /// 一時停止中のシーケンスを再開する
+    /// </summary>
     public void DoPlay()
     {
         if (isVertical)
@@ -123,9 +140,11 @@ public class Needle : MonoBehaviour
         {
             horizontalSeq?.Play();
         }
-        isGame = true;
     }
 
+    /// <summary>
+    /// シーケンスを一時停止する
+    /// </summary>
     public void DoStop()
     {
         if (isVertical)
@@ -136,22 +155,20 @@ public class Needle : MonoBehaviour
         {
             horizontalSeq?.Pause();
         }
-        isGame = false;
     }
 
+    /// <summary>
+    /// ギミックをリセットする（Tweenを破棄し、初期位置に戻す）
+    /// </summary>
     public void ResetGimmick()
     {
+        // シーケンスを破棄
         verticalSeq?.Kill();
-
         verticalSeq = null;
-
         horizontalSeq?.Kill();
-
         horizontalSeq = null;
 
         isInitialized = false;
-
-        isGame = false;
 
         if (isVertical)
         {

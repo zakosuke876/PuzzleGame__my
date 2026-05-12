@@ -12,11 +12,6 @@ public class Ball : MonoBehaviour
     [SerializeField] private BallManager ballManager;
 
     /// <summary>
-    /// ボールリスポーン時に発火するイベント
-    /// </summary>
-    public event System.Action OnBallRespawn;
-
-    /// <summary>
     /// ゲームオーバー時に発火するイベント
     /// </summary>
     public event System.Action OnBallGameOver;

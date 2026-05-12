@@ -27,8 +27,8 @@ public class Conveyor : MonoBehaviour
     [Header("スプライト切り替え間隔"), SerializeField]
     private float conveyorSpriteInterval;
 
+    // アニメーションのフレーム切り替えを管理するタイマー
     private float conveyorTimer = 0f;
-
     private int conveyorSpriteIndex = 0;
 
     private SpriteRenderer spriteRenderer;

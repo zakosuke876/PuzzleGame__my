@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GimmickManager : MonoBehaviour
 {
+    // IGimmickManagerを実装したコンポーネントを子から集めて保持するリスト
     private List<IGimmickManager> managers = new List<IGimmickManager>();
 
+    /// <summary>
+    /// ゲームステートのイベントを購読する
+    /// </summary>
     public void Initialize()
     {
         managers.AddRange(GetComponentsInChildren<IGimmickManager>());
@@ -18,6 +22,7 @@ public class GimmickManager : MonoBehaviour
         GameManager.Instance.OnStateChanged -= HandleStateChange;
     }
 
+    // ゲームステートの変化を受け取る
     private void HandleStateChange(GameState state)
     {
         switch (state)
@@ -45,9 +50,18 @@ public class GimmickManager : MonoBehaviour
                 OnGameReset();
 
                 break;
+
+            case GameState.Reset:
+
+                OnGameReset();
+
+                break;
         }
     }
 
+    /// <summary>
+    /// ギミックのゲーム開始処理を呼びだす
+    /// </summary>
     public void OnGameStart()
     {
         foreach (IGimmickManager manager in managers)
@@ -56,6 +70,9 @@ public class GimmickManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ギミックのゲーム停止処理を呼びだす
+    /// </summary>
     public void OnGameStop()
     {
         foreach (IGimmickManager manager in managers)
@@ -64,6 +81,9 @@ public class GimmickManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// IResettableを実装しているギミックのみリセット処理を呼びだす
+    /// </summary>
     public void OnGameReset()
     {
         foreach (IResettable resettable in managers.OfType<IResettable>())

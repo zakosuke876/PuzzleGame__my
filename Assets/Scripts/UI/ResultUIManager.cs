@@ -4,8 +4,9 @@ public class ResultUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameClearPanel;
 
+    [SerializeField] private GameObject pausePanel;
+
     [SerializeField] private GameObject gameOverPanel;
-    
 
     private void Start()
     {
@@ -26,11 +27,16 @@ public class ResultUIManager : MonoBehaviour
         {
             case GameState.Game:
 
+                Time.timeScale = 1;
                 HideAllPanels();
+                pausePanel.SetActive(false);
 
                 break;
 
             case GameState.Pause:
+
+                Time.timeScale = 0;
+                pausePanel.SetActive(true);
 
                 break;
 
@@ -51,6 +57,12 @@ public class ResultUIManager : MonoBehaviour
                 showGameOverPanel();
 
                 break;
+
+            case GameState.Reset:
+
+                HideAllPanels();
+
+                break;
         }
     }
 
@@ -58,6 +70,7 @@ public class ResultUIManager : MonoBehaviour
     {
         gameClearPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        pausePanel.SetActive(false);
     }
 
     private void showGameClearPanel()

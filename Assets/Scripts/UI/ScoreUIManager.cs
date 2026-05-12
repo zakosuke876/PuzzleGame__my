@@ -24,7 +24,6 @@ public class ScoreUIManager : MonoBehaviour
     {
         if (GameManager.Instance == null)
         {
-            Debug.Log("GameManager‚ª‚ ‚è‚Ü‚¹‚ñ");
             return;
         }
 

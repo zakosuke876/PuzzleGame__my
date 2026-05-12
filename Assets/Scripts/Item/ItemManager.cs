@@ -50,7 +50,6 @@ public class ItemManager : MonoBehaviour
 
         if (GameManager.Instance == null)
         {
-            Debug.Log("GameManager‚ª‚ ‚è‚Ü‚¹‚ñ");
             return;
         }
 
@@ -105,6 +104,14 @@ public class ItemManager : MonoBehaviour
 
                 break;
 
+            case GameState.Reset:
+
+                ResetAll();
+
+                gemUi.ResetGemColor();
+
+                break;
+
             default:
 
                 break;
@@ -118,7 +125,6 @@ public class ItemManager : MonoBehaviour
     {
         collectedGemCount++;
         OnGemCollected?.Invoke(type);
-        Debug.Log(collectedGemCount);
     }
 
     /// <summary>

@@ -33,6 +33,14 @@ public class BallManager : MonoBehaviour
     public event System.Action OnBallDead;
 
 
+    /// <summary>
+    /// リトライ時に発火するイベント
+    /// </summary>
+    public event System.Action OnBallRespawn;
+
+    public event System.Action OnBallSpawned;
+
+
     public void Initialize()
     {
         // ステート変更を購読
@@ -47,7 +55,6 @@ public class BallManager : MonoBehaviour
     {
         if (GameManager.Instance == null)
         {
-            Debug.Log("GameManagerがありません");
             return;
         }
 
@@ -56,8 +63,6 @@ public class BallManager : MonoBehaviour
 
         if (currentBall != null )
         {
-            currentBall.OnBallRespawn -= RespawnBall;
-
             currentBall.OnBallGameOver -= GameOver;
         }
     }
@@ -69,21 +74,13 @@ public class BallManager : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Title:
-
-                //Debug.Log("BallManager.State.Title");
-
-                break;
+            
 
             case GameState.Game:
-
-                Debug.Log("BallManager.State.Game");
 
                 break;
 
             case GameState.Pause:
-
-                //Debug.Log("BallManager.State.Pause");
 
                 break;
 
@@ -93,7 +90,21 @@ public class BallManager : MonoBehaviour
 
             case GameState.GameOver:
 
-                //Debug.Log("BallManager.State.GameOver");
+                break;
+
+            case GameState.Reset:
+
+                if (currentBall != null)
+                {
+                    DestroyAnimation(() =>
+                    {
+                        isRespawning = false;
+                    });
+                }
+                else
+                {
+                    isRespawning = false;
+                }
 
                 break;
 
@@ -111,14 +122,12 @@ public class BallManager : MonoBehaviour
         // ボールを生成
         currentBall = Instantiate(ballPrefab, spawnStartPosition, Quaternion.identity);
 
+        isRespawning = true;
+
         // リスポーン中はアイテムを取得できないようにする
         currentBall.gameObject.layer = LayerMask.NameToLayer(Layers.NoItemCollision);
 
-        currentBall.OnBallRespawn += RespawnBall;
-
-
         currentBall.OnBallGameOver += GameOver;
-
 
         currentBall.Initialize(this);
 
@@ -135,16 +144,17 @@ public class BallManager : MonoBehaviour
                          currentBall.gameObject.layer = LayerMask.NameToLayer(Layers.Player);
                          currentBall.EnablePhysics();
                          isRespawning = false;
-                         GameManager.Instance.ChangeState(GameState.Game);
+                         OnBallSpawned?.Invoke();
                      });
-    }     
+    }
 
     public void DestroyAnimation(Action onComplete = null)
     {
+        if (currentBall == null) return;
+
+        currentBall.transform.DOKill();
+
         currentBall.DisablePhysics();
-
-        currentBall.OnBallRespawn -= RespawnBall;
-
 
         currentBall.OnBallGameOver -= GameOver;
 
@@ -172,7 +182,7 @@ public class BallManager : MonoBehaviour
 
         currentBall.gameObject.layer = LayerMask.NameToLayer(Layers.NoItemCollision);
 
-        GameManager.Instance.ChangeState(GameState.Respawn);
+        OnBallRespawn?.Invoke();
 
         DestroyAnimation(SpawnBall);
     }
@@ -185,15 +195,21 @@ public class BallManager : MonoBehaviour
 
         isRespawning = true;
 
-        GameManager.Instance.ChangeState(GameState.GameOver);
-
-        DestroyAnimation();
+        DestroyAnimation(() =>
+        {
+            OnBallDead?.Invoke();
+        });
     }
 
     public void Retry()
     {
-        isRespawning = false;
-
-        SpawnBall();
+        if (currentBall != null)
+        {
+            DestroyAnimation(SpawnBall);
+        }
+        else
+        {
+            SpawnBall();
+        }
     }
 }

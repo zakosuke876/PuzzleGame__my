@@ -18,12 +18,16 @@ public class Button : MonoBehaviour
     #region ボタン用関数
     public void SceneChange()
     {
+        // ポーズ中に呼ばれる場合もあるので対策
+        Time.timeScale = 1;
         // 設定したシーンに遷移する
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName.ToString());
     }
 
     public void GameRetry()
     {
+        // ポーズ中に呼ばれる場合もあるので対策
+        Time.timeScale = 1;
         GameManager.Instance.Retry();
     }
     #endregion

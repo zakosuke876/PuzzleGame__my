@@ -171,4 +171,6 @@ MonoBehaviour:
   currentConveyor: {fileID: 0}
   ballManager: {fileID: 0}
   resetTriggerPosY: -10
+  audioClip: {fileID: 0}
+  volume: 0.7
   destroyDuration: 0.3
