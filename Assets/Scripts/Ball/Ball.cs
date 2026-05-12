@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -33,11 +32,13 @@ public class Ball : MonoBehaviour
             col.enabled = false;
         }
 
+        // BallManagerの参照を渡す
         ballManager = manager;
     }
 
     /// <summary>
     /// 生成アニメーション準備
+    /// 物理演算を無効化
     /// </summary>
     public void PrepareSpawn()
     {
@@ -72,22 +73,28 @@ public class Ball : MonoBehaviour
         {
             Vector2 dir;
 
+            // 取得したコンベアオブジェクトのflagによって右・左向きを判別する
             dir = (currentConveyor.IsMovingRight) ? Vector2.right : Vector2.left;
 
+            // 速度を設定
             rb.linearVelocity = dir * currentConveyor.ConveyorSpeed;
 
+            // Y方向の速度を0にする
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
+            // 重力を無効化
             rb.gravityScale = 0f;
 
+            // 回転速度を0にする
             rb.angularVelocity = 0f;
         }
         else
         {
-            // ベルトに乗っていない場合は重力を有効にする
+            // コンベアに乗っていない場合は重力を有効にする
             rb.gravityScale = 1f;
         }
 
+        // 指定した座標よりも下に落ちたら
         if (this.transform.position.y < resetTriggerPosY)
         {
             PositionReset();
@@ -96,20 +103,25 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // コンベアに接触した場合
         if (collision.gameObject.TryGetComponent(out Conveyor conveyor))
         {
+            // 上からコンベアに乗った場合
             if (transform.position.y > conveyor.transform.position.y + 0.2f)
             {
+                // スクリプト取得
                 currentConveyor = conveyor;
             }
         }
 
+        // Trapに接触した場合はゲームオーバー
         if (collision.gameObject.CompareTag(Tags.Trap))
         {
             // ボールのゲームオーバーイベントを発火
             OnBallGameOver?.Invoke();
         }
 
+        // 消えるブロックに接触した場合
         if (collision.gameObject.TryGetComponent(out DisappearingBlock block))
         {
             block.StartDisappearing();
@@ -118,8 +130,10 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        // コンベアから離れた場合コンベア参照を解除
         if (collision.gameObject.TryGetComponent(out Conveyor conveyor))
         {
+            // 乗っていたコンベアと一致する場合のみ解除
             if (conveyor == currentConveyor)
             {
                 currentConveyor = null;
@@ -127,6 +141,10 @@ public class Ball : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ボールが落下時にゲームオーバーイベントを発火
+    /// <see cref="BallManager.GameOver"/>
+    /// </summary>
     private void PositionReset()
     {
         OnBallGameOver?.Invoke();

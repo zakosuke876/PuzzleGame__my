@@ -170,7 +170,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ball
   currentConveyor: {fileID: 0}
   ballManager: {fileID: 0}
-  resetTriggerPosY: -10
-  audioClip: {fileID: 0}
-  volume: 0.7
+  resetTriggerPosY: -16
   destroyDuration: 0.3

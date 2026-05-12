@@ -1,8 +1,7 @@
-using UnityEngine;
-using TMPro;
 using System;
 using System.Collections;
-using UnityEngine.UI;
+using TMPro;
+using UnityEngine;
 
 public class CountdownUI : MonoBehaviour
 {
@@ -13,6 +12,9 @@ public class CountdownUI : MonoBehaviour
 
     [SerializeField] private int countdownTime = 3;
 
+    /// <summary>
+    /// カウントダウン終了時に発火するイベント
+    /// </summary>
     public event Action OnCountDownFinished;
 
     private void Awake()
@@ -31,7 +33,7 @@ public class CountdownUI : MonoBehaviour
     /// </summary>
     IEnumerator PlayCountdown()
     {
-        // 3秒間のカウントダウンを開始
+        // カウントダウンを開始
         for (int i = countdownTime; i > 0; i--)
         {
             countdownText.text = i.ToString();
@@ -44,6 +46,7 @@ public class CountdownUI : MonoBehaviour
 
         countdownPanel.gameObject.SetActive(false);
         
+        // カウントダウン完了を通知
         OnCountDownFinished?.Invoke();
     }
 }

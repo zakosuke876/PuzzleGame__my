@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BallManager : MonoBehaviour
 {
@@ -32,12 +31,14 @@ public class BallManager : MonoBehaviour
     /// </summary>
     public event System.Action OnBallDead;
 
-
     /// <summary>
-    /// リトライ時に発火するイベント
+    /// ボールのリスポーン要求に発火するイベント
     /// </summary>
     public event System.Action OnBallRespawn;
 
+    /// <summary>
+    /// ボール生成完了時に発火
+    /// </summary>
     public event System.Action OnBallSpawned;
 
 

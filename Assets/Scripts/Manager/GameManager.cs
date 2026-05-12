@@ -45,12 +45,25 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public event Action<GameState> OnStateChanged;
 
+    // 最初はタイトル状態
     [SerializeField] private GameState currentState = GameState.Title;
 
+    /// <summary>
+    /// ボールがリスポーン要求された時
+    /// </summary>
+    /// <see cref="BallManager.OnBallRespawn"/>
     private void OnBallRespawn() => ChangeState(GameState.Respawn);
 
+    /// <summary>
+    /// ボールが死亡した時
+    /// </summary>
+    /// <see cref="BallManager.OnBallDead"/>
     private void OnBallDead() => ChangeState(GameState.GameOver);
 
+    /// <summary>
+    /// ボール生成完了時
+    /// </summary>
+    /// <see cref="BallManager.OnBallSpawned"/>
     private void OnBallSpawned() => ChangeState(GameState.Game);
     private void Start()
     {
@@ -69,11 +82,8 @@ public class GameManager : MonoBehaviour
     {
         // イベント購読解除
         countdownUI.OnCountDownFinished -= Initialize;
-
         ballManager.OnBallRespawn -= OnBallRespawn;
-
         ballManager.OnBallDead -= OnBallDead;
-
         ballManager.OnBallSpawned -= OnBallSpawned;
     }
 
@@ -118,6 +128,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"初期化失敗:{e.Message}");
         }
 
+        // 状態変更
         ChangeState(currentState);
 
         countdownUI.OnCountDownFinished -= Initialize;
