@@ -1699,7 +1699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1739,7 +1739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: waitTime
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: goalPos.x
@@ -1747,7 +1747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: goalPos.y
-      value: -0.5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: startPos.x
@@ -1755,11 +1755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: startPos.y
-      value: -5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6493750243890929089, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
       propertyPath: m_Name
-      value: Saw(1)
+      value: Saw
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1815,11 +1815,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  gimmickManager: {fileID: 1874175071}
+  gimmickManager: {fileID: 1874175073}
   itemManager: {fileID: 1592295882}
   ballManager: {fileID: 266067744}
   countdownUI: {fileID: 35493097}
-  currentState: 1
+  currentState: 0
 --- !u!4 &589691250
 Transform:
   m_ObjectHideFlags: 0
@@ -2080,11 +2080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8014404911213881648, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.44628
+      value: 11.48
       objectReference: {fileID: 0}
     - target: {fileID: 8014404911213881648, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.937709
+      value: 4.83
       objectReference: {fileID: 0}
     - target: {fileID: 8014404911213881648, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2424,7 +2424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745909486}
-  - component: {fileID: 745909487}
+  - component: {fileID: 745909491}
   - component: {fileID: 745909488}
   - component: {fileID: 745909490}
   - component: {fileID: 745909489}
@@ -2450,27 +2450,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &745909487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745909484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316bb8b89ced0144d82b3e7a20bef69e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GridManager
-  rows: 2
-  cols: 3
-  objects:
-  - {fileID: 1932287230}
-  - {fileID: 1710376892}
-  - {fileID: 1447093003}
-  - {fileID: 898126990}
-  - {fileID: 1110455507}
-  - {fileID: 2120971329}
 --- !u!114 &745909488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2483,7 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7542f7d0978216943acd217f3f99294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorController
-  gridManager: {fileID: 745909487}
+  gridMng: {fileID: 745909491}
   audioClip: {fileID: 8300000, guid: 8b3b245826f8a9d4e886c687f86d1a32, type: 3}
   volume: 0.5
 --- !u!82 &745909489
@@ -2595,88 +2574,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f535c4a25016e49903cfd39b1cfac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveFloorController
-  gridManager: {fileID: 745909487}
+  gridMng: {fileID: 745909491}
   floorMoveSpeed: 5
   audioClip: {fileID: 8300000, guid: 66869cd890a131b4082a983e0cde1b32, type: 3}
   volume: 0.3
---- !u!1001 &750159754
-PrefabInstance:
+--- !u!114 &745909491
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 992936450}
-    m_Modifications:
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: goalPos.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: goalPos.y
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: startPos.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: startPos.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6493750243890929089, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-      propertyPath: m_Name
-      value: Saw
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
---- !u!4 &750159759 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5066424406254703012, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-  m_PrefabInstance: {fileID: 750159754}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745909484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e104e3c66e7b3964cb60458bdc9b1fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridMng
+  rows: 2
+  cols: 3
+  objects:
+  - {fileID: 1932287230}
+  - {fileID: 1710376892}
+  - {fileID: 1447093003}
+  - {fileID: 898126990}
+  - {fileID: 1110455507}
+  - {fileID: 2120971329}
 --- !u!1 &796332967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,7 +3371,6 @@ Transform:
   m_Children:
   - {fileID: 136895704}
   - {fileID: 1438485036}
-  - {fileID: 750159759}
   - {fileID: 555311037}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12066,7 +11987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SawManager
   saws:
-  - {fileID: 2065192036}
   - {fileID: 1380290351}
 --- !u!1 &1592295881
 GameObject:
@@ -13201,7 +13121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1874175072}
-  - component: {fileID: 1874175071}
+  - component: {fileID: 1874175073}
   m_Layer: 0
   m_Name: GimmickManager
   m_TagString: Untagged
@@ -13209,18 +13129,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1874175071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874175070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae7057813d50884ba5c7f87a6512669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GimmickManager
 --- !u!4 &1874175072
 Transform:
   m_ObjectHideFlags: 0
@@ -13238,6 +13146,18 @@ Transform:
   - {fileID: 105039304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1874175073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874175070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0d6f22344990d4b82f047bdb41d14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GimmickManger
 --- !u!1 &1882390413
 GameObject:
   m_ObjectHideFlags: 0
@@ -14008,17 +13928,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2065192036 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5497984054520364208, guid: b79bfa2f0ff9ade4b814d5273fd18a26, type: 3}
-  m_PrefabInstance: {fileID: 750159754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3195e6088b03eee4ca1af0c888b98162, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Saw
 --- !u!1 &2092214138
 GameObject:
   m_ObjectHideFlags: 0
@@ -14287,7 +14196,7 @@ PrefabInstance:
     - target: {fileID: 5287941613710621009, guid: a5906774083b7bf4a9d0ce305578aa1e, type: 3}
       propertyPath: gridManager
       value: 
-      objectReference: {fileID: 745909487}
+      objectReference: {fileID: 0}
     - target: {fileID: 6506036213383487813, guid: a5906774083b7bf4a9d0ce305578aa1e, type: 3}
       propertyPath: m_Name
       value: MoovFloor

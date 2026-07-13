@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private GimmickManager gimmickManager;
+    [SerializeField] private GimmickManger gimmickManager;
 
     [SerializeField] private ItemManager itemManager;
 
@@ -65,10 +65,13 @@ public class GameManager : MonoBehaviour
     private void OnBallSpawned() => ChangeState(GameState.Game);
     private void Start()
     {
-        // カウントダウン完了後にInitializeを呼ぶ
-        countdownUI.OnCountDownFinished += Initialize;
+        if (countdownUI != null)
+        {
+            // カウントダウン完了後にInitializeを呼ぶ
+            countdownUI.OnCountDownFinished += Initialize;
 
-        countdownUI.StartCountdown();
+            countdownUI.StartCountdown();
+        }
 
         // ボールの状態変化イベントを購読
         ballManager.OnBallRespawn += OnBallRespawn;
@@ -87,9 +90,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // Rキーでリセット
-        if (Keyboard.current.rKey.wasPressedThisFrame) ballManager.RespawnBall();
-
         // Pキーでポーズ
         if (Keyboard.current.pKey.wasPressedThisFrame)
         {
@@ -115,15 +115,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Initialize()
     {
-        try
+        if (ballManager != null)
+        {
+            ballManager.Initialize();
+        }
+
+        if (itemManager != null)
         {
             itemManager.Initialize();
-            ballManager.Initialize();
-            gimmickManager.Initialize();
         }
-        catch (Exception e)
+
+        if (gimmickManager != null)
         {
-            Debug.LogError($"初期化失敗:{e.Message}");
+            gimmickManager.Initialize();
         }
 
         // 状態変更

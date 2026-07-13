@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class ConveyorController : MonoBehaviour
 {
-    [SerializeField] private GridManager gridManager;
+    [SerializeField] private GridMng gridMng;
 
     // 現在選択されているオブジェクト
     private GameObject selectedObject;
@@ -24,12 +24,12 @@ public class ConveyorController : MonoBehaviour
     private void Initialize()
     {
         // 選択オブジェクト変更イベント購読
-        gridManager.OnSelectedObjectChanged += OnSelectedChanged;
+        gridMng.OnSelectedObjectChanged += OnSelectedChanged;
     }
 
     private void OnDisable()
     {
-        gridManager.OnSelectedObjectChanged -= OnSelectedChanged;
+        gridMng.OnSelectedObjectChanged -= OnSelectedChanged;
     }
 
     /// <summary>
@@ -48,7 +48,10 @@ public class ConveyorController : MonoBehaviour
         if (!selectedObject.CompareTag(Tags.ConveyorBelt)) return;
 
         // A,Dキーでコンベアの向きを左右に切り替える
-        if (Keyboard.current.aKey.wasPressedThisFrame) ChangeDirection(false);
+        if (Keyboard.current.aKey.wasPressedThisFrame)
+        {
+            ChangeDirection(false);
+        }
         if (Keyboard.current.dKey.wasPressedThisFrame) ChangeDirection(true);
     }
 

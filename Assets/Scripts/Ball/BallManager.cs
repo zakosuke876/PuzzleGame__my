@@ -75,8 +75,6 @@ public class BallManager : MonoBehaviour
     {
         switch (state)
         {
-            
-
             case GameState.Game:
 
                 break;
@@ -120,6 +118,8 @@ public class BallManager : MonoBehaviour
     /// </summary>
     public void SpawnBall()
     {
+        if (isRespawning) return;
+        Debug.Log("ボール生成");
         // ボールを生成
         currentBall = Instantiate(ballPrefab, spawnStartPosition, Quaternion.identity);
 

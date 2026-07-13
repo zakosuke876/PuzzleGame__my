@@ -13,6 +13,7 @@ public class StageButtonMedalSetter : MonoBehaviour
     // 各ステージのメダル表示用Imageコンポーネント
     [SerializeField] private Image stage1Medal;
     [SerializeField] private Image stage2Medal;
+    [SerializeField] private Image stage3Medal;
     void Start()
     {
         Initialize();
@@ -23,6 +24,7 @@ public class StageButtonMedalSetter : MonoBehaviour
     {
         SetMedal(stage1Medal, bronzeMedal, Color.black, 0.5f);
         SetMedal(stage2Medal, bronzeMedal, Color.black, 0.5f);
+        SetMedal(stage3Medal, bronzeMedal, Color.black, 0.5f);
     }
 
     /// <summary>
@@ -31,8 +33,8 @@ public class StageButtonMedalSetter : MonoBehaviour
     private void ApplySavedRanks()
     {
         ApplyMedal(stage1Medal, 1);
-
         ApplyMedal(stage2Medal, 2);
+        ApplyMedal(stage3Medal, 3);
     }
 
     /// <summary>
@@ -72,7 +74,6 @@ public class StageButtonMedalSetter : MonoBehaviour
             case Rank.C:
 
                 return bronzeMedal;
-
 
             default:
 

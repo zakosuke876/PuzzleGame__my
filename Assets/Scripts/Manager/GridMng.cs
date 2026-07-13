@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System;
 
-public class GridManager : MonoBehaviour
+public class GridMng : MonoBehaviour
 {
     [Header("グリッド設定")]
     [SerializeField] private int rows = 2; // 行
@@ -59,7 +59,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    
+
     /// <summary>
     /// カーソルを移動し、選択オブジェクトの変更を通知する
     /// </summary>
@@ -67,22 +67,38 @@ public class GridManager : MonoBehaviour
     {
         ResetHighlight();
 
-        Vector2Int direction = new Vector2Int(rowPower, colPower);
-        Vector2Int newPos = currentPos + direction;
+        GameObject near = null;
+        Vector2Int nearPos = currentPos;
+        int bestScore = int.MaxValue;
 
-        // 登録されているオブジェクトが見つかるまで進む
-        while (IsInBounds(newPos))
+        foreach (var kvp in grid)
         {
-            if (grid.ContainsKey(newPos))
+            Vector2Int pos = kvp.Key;
+            if (pos == currentPos) continue;
+
+            int dRow = pos.x - currentPos.x;
+            int dCol = pos.y - currentPos.y;
+
+            // 移動方向と逆方向は除外
+            if (rowPower != 0 && dRow * rowPower <= 0) continue;
+            if (colPower != 0 && dCol * colPower <= 0) continue;
+
+            // 主軸距離 * 重み + 副幅距離
+            int primary = Mathf.Abs(rowPower != 0 ? dRow : dCol);
+            int secondary = Mathf.Abs(rowPower != 0 ? dCol : dRow);
+            int score = primary * 1000 + secondary;
+
+            if (score < bestScore)
             {
-                currentPos = newPos;
-                break;
+                bestScore = score;
+                nearPos = pos;
+                near = kvp.Value;
             }
-            newPos += direction;
         }
 
-        HighlightSelected();
+        if (near != null) currentPos = nearPos;
 
+        HighlightSelected();
         OnSelectedObjectChanged?.Invoke(GetSelectObject());
     }
 
@@ -109,14 +125,6 @@ public class GridManager : MonoBehaviour
         }
 
         return null;
-    }
-
-    /// <summary>
-    /// グリッドの範囲内かどうかを判定する
-    /// </summary>
-    private bool IsInBounds(Vector2Int pos)
-    {
-        return pos.x >= 0 && pos.x < rows && pos.y >= 0 && pos.y < cols;
     }
 
     /// <summary>

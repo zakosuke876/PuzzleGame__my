@@ -65,11 +65,6 @@ public class ScoreUIManager : MonoBehaviour
         }
     }
 
-    /*private void ShowResult()
-    {
-        int count = ItemManager.
-    }*/
-
     /// <summary>
     /// ¯‚Ì˜g‚ğ•\¦‚·‚é
     /// </summary>

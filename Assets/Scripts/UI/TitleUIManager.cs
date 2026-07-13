@@ -5,8 +5,6 @@ public class TitleUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject titleMainPanel;
 
-    [SerializeField] private GameObject manualPanel;
-
     [SerializeField] private GameObject stageSelectPanel;
     void Start()
     {
@@ -16,7 +14,6 @@ public class TitleUIManager : MonoBehaviour
     void Initialize()
     {
         titleMainPanel.SetActive(true);
-        manualPanel.SetActive(false);
         stageSelectPanel.SetActive(false);
     }
 
@@ -28,12 +25,6 @@ public class TitleUIManager : MonoBehaviour
 
                 AllPanelReset();
                 ShowMainPanel();
-                break;
-
-            case TitlePanel.Manual:
-
-                AllPanelReset();
-                ShowManualPanel();
                 break;
 
             case TitlePanel.StageSelect:
@@ -51,18 +42,12 @@ public class TitleUIManager : MonoBehaviour
     void AllPanelReset()
     {
         titleMainPanel.SetActive(false);
-        manualPanel.SetActive(false);
         stageSelectPanel.SetActive(false);
     }
 
     void ShowMainPanel()
     {
         titleMainPanel.SetActive(true);
-    }
-
-    void ShowManualPanel()
-    {
-        manualPanel.SetActive(true);
     }
 
     void ShowStageSelectPanel()

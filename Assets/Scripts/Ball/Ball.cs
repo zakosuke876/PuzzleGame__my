@@ -103,13 +103,15 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // コンベアに接触した場合
+        ContactPoint2D contact = collision.GetContact(0);
+
+        // 上側から触れた場合
+        bool hitFromUp = contact.normal.y > 0.7f;
+
         if (collision.gameObject.TryGetComponent(out Conveyor conveyor))
         {
-            // 上からコンベアに乗った場合
-            if (transform.position.y > conveyor.transform.position.y + 0.2f)
+            if (hitFromUp)
             {
-                // スクリプト取得
                 currentConveyor = conveyor;
             }
         }
@@ -124,7 +126,10 @@ public class Ball : MonoBehaviour
         // 消えるブロックに接触した場合
         if (collision.gameObject.TryGetComponent(out DisappearingBlock block))
         {
-            block.StartDisappearing();
+            if (hitFromUp)
+            {
+                block.StartDisappearing();
+            }
         }
     }
 
