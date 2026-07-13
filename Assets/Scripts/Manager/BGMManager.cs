@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip gameOberClip;
+    [SerializeField] private AudioClip gameOverClip;
     [SerializeField] private AudioClip bgmClip;
     [SerializeField] private float volume = 1f;
     private AudioSource audioSource;
@@ -81,7 +81,7 @@ public class BGMManager : MonoBehaviour
 
                 audioSource.Stop();
 
-                audioSource.PlayOneShot(gameOberClip, volume);
+                audioSource.PlayOneShot(gameOverClip, volume);
 
                 break;
 

@@ -1962,7 +1962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a910d88dad11694dadb3dea588bb2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGMManager
-  gameOberClip: {fileID: 8300000, guid: eed8f416b00ece94c8d8ddd80cb57fc5, type: 3}
+  gameOverClip: {fileID: 8300000, guid: eed8f416b00ece94c8d8ddd80cb57fc5, type: 3}
   bgmClip: {fileID: 8300000, guid: 630e96d6b7b058f48a00522a5e46c415, type: 3}
   volume: 0.2
 --- !u!4 &592144865

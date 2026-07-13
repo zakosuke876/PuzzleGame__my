@@ -15,6 +15,18 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+
+#if UNITY_EDITOR
+    [Header("--- Debug ---")]
+    [SerializeField] private GameState debugState;
+
+    [ContextMenu("Force Change State")]
+    private void DebugChangeState()
+    {
+        ChangeState(debugState);
+    }
+#endif
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -50,19 +62,19 @@ public class GameManager : MonoBehaviour
     /// ボールがリスポーン要求された時
     /// </summary>
     /// <see cref="BallManager.OnBallRespawn"/>
-    private void OnBallRespawn() => ChangeState(GameState.Respawn);
+    private void HandleBallRespawned() => ChangeState(GameState.Respawn);
 
     /// <summary>
     /// ボールが死亡した時
     /// </summary>
     /// <see cref="BallManager.OnBallDead"/>
-    private void OnBallDead() => ChangeState(GameState.GameOver);
+    private void HandleBallDead() => ChangeState(GameState.GameOver);
 
     /// <summary>
     /// ボール生成完了時
     /// </summary>
     /// <see cref="BallManager.OnBallSpawned"/>
-    private void OnBallSpawned() => ChangeState(GameState.Game);
+    private void HandleBallSpawned() => ChangeState(GameState.Game);
     private void Start()
     {
         if (countdownUI != null)
@@ -72,20 +84,32 @@ public class GameManager : MonoBehaviour
 
             countdownUI.StartCountdown();
         }
+    }
+
+    private void OnEnable()
+    {
+        // 重複インスタンス(Awakeで破棄予定)は購読しない
+        if (Instance != this) return;
 
         // ボールの状態変化イベントを購読
-        ballManager.OnBallRespawn += OnBallRespawn;
-        ballManager.OnBallDead += OnBallDead;
-        ballManager.OnBallSpawned += OnBallSpawned;
+        ballManager.OnBallRespawn += HandleBallRespawned;
+        ballManager.OnBallDead += HandleBallDead;
+        ballManager.OnBallSpawned += HandleBallSpawned;
     }
 
     private void OnDisable()
     {
+        // 購読していない場合は処理しない
+        if (Instance != this) return;
+
         // イベント購読解除
+        ballManager.OnBallRespawn -= HandleBallRespawned;
+        ballManager.OnBallDead -= HandleBallDead;
+        ballManager.OnBallSpawned -= HandleBallSpawned;
+
+
         countdownUI.OnCountDownFinished -= Initialize;
-        ballManager.OnBallRespawn -= OnBallRespawn;
-        ballManager.OnBallDead -= OnBallDead;
-        ballManager.OnBallSpawned -= OnBallSpawned;
+        countdownUI.OnCountDownFinished -= RetryStart;
     }
 
     private void Update()
