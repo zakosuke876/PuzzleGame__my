@@ -10,7 +10,7 @@ public class ScoreUIManager : MonoBehaviour
 
     [SerializeField] private List<Image> starOutlines = new List<Image>();
 
-    [SerializeField] private RankManager scoreManager;
+    //[SerializeField] private RankManager scoreManager;
 
     // ƒ‰ƒ“ƒN‚ð•\Ž¦‚·‚é
     [SerializeField] private TextMeshProUGUI rankSetText;

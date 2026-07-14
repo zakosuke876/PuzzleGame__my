@@ -31,14 +31,13 @@ public class ResultUIManager : MonoBehaviour
 
                 Time.timeScale = 1;
                 HideAllPanels();
-                pausePanel.SetActive(false);
 
                 break;
 
             case GameState.Pause:
 
                 Time.timeScale = 0;
-                pausePanel.SetActive(true);
+                ShowPanel(pausePanel);
 
                 break;
 
@@ -50,13 +49,13 @@ public class ResultUIManager : MonoBehaviour
 
             case GameState.GameClear:
 
-                showGameClearPanel();
+                ShowPanel(gameClearPanel);
 
                 break;
 
             case GameState.GameOver:
 
-                showGameOverPanel();
+                ShowPanel(gameOverPanel);
 
                 break;
 
@@ -68,22 +67,19 @@ public class ResultUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 指定したパネルだけを表示する
+    /// </summary>
+    private void ShowPanel(GameObject panel)
+    {
+        HideAllPanels();
+        panel.SetActive(true);
+    }
+
     private void HideAllPanels()
     {
         gameClearPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
-    }
-
-    private void showGameClearPanel()
-    {
-        gameClearPanel.SetActive(true);
-        gameOverPanel.SetActive(false);
-    }
-
-    private void showGameOverPanel()
-    {
-        gameClearPanel.SetActive(false);
-        gameOverPanel.SetActive(true);
     }
 }
