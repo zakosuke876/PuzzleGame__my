@@ -79,11 +79,23 @@ public class GameManager : MonoBehaviour
     {
         if (countdownUI != null)
         {
-            // カウントダウン完了後にInitializeを呼ぶ
-            countdownUI.OnCountDownFinished += Initialize;
-
-            countdownUI.StartCountdown();
+            StartCountDownOnce(Initialize);
         }
+    }
+
+    /// <summary>
+    /// カウントダウンを開始し、終了後に1度onFinishedを呼ぶ
+    /// </summary>
+    private void StartCountDownOnce(Action onFinished)
+    {
+        void Handler()
+        {
+            countdownUI.OnCountDownFinished -= Handler;
+            onFinished();
+        }
+
+        countdownUI.OnCountDownFinished += Handler;
+        countdownUI.StartCountdown();
     }
 
     private void OnEnable()
@@ -108,8 +120,8 @@ public class GameManager : MonoBehaviour
         ballManager.OnBallSpawned -= HandleBallSpawned;
 
 
-        countdownUI.OnCountDownFinished -= Initialize;
-        countdownUI.OnCountDownFinished -= RetryStart;
+        //countdownUI.OnCountDownFinished -= Initialize;
+        //countdownUI.OnCountDownFinished -= RetryStart;
     }
 
     private void Update()
@@ -156,9 +168,6 @@ public class GameManager : MonoBehaviour
 
         // 状態変更
         ChangeState(currentState);
-
-        countdownUI.OnCountDownFinished -= Initialize;
-
     }
 
     /// <summary>
@@ -178,18 +187,16 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(GameState.Reset);
 
-        countdownUI.OnCountDownFinished += RetryStart;
-
-        countdownUI.StartCountdown();
+        StartCountDownOnce(ballManager.Retry);
     }
 
     /// <summary>
     /// カウントダウン完了後にリトライ
     /// </summary>
-    public void RetryStart()
+    /*public void RetryStart()
     {
         countdownUI.OnCountDownFinished -= RetryStart;
 
         ballManager.Retry();
-    }
+    }*/
 }

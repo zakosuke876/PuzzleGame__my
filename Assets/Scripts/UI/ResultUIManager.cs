@@ -17,6 +17,8 @@ public class ResultUIManager : MonoBehaviour
 
     private void OnDisable()
     {
+        if (GameManager.Instance == null) return;
+
         GameManager.Instance.OnStateChanged -= HandleStateChange;
     }
 

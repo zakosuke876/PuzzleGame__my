@@ -54,10 +54,7 @@ public class BallManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (GameManager.Instance == null)
-        {
-            return;
-        }
+        if (GameManager.Instance == null) return;
 
         // ステート変更の購読解除
         GameManager.Instance.OnStateChanged -= HandleStateChange;
@@ -119,7 +116,7 @@ public class BallManager : MonoBehaviour
     public void SpawnBall()
     {
         if (isRespawning) return;
-        Debug.Log("ボール生成");
+
         // ボールを生成
         currentBall = Instantiate(ballPrefab, spawnStartPosition, Quaternion.identity);
 

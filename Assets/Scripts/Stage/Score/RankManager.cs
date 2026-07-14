@@ -43,10 +43,7 @@ public class RankManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (GameManager.Instance == null)
-        {
-            return;
-        }
+        if (GameManager.Instance == null) return;
 
         GameManager.Instance.OnStateChanged -= HandleStateChange;
     }
