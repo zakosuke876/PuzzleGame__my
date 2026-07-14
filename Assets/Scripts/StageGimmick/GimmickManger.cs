@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GimmickManger : MonoBehaviour
@@ -16,12 +14,18 @@ public class GimmickManger : MonoBehaviour
     /// </summary>
     public void Initialize()
     {
+        // “ñd“o˜^–h~
+        managers.Clear();
+        resetManagers.Clear();
+
         // qƒIƒuƒWƒFƒNƒg“à‚ÌIGimmickManagerÀ‘•‚ğ‘S‚Äæ“¾‚µ‚Ä“o˜^
         managers.AddRange(GetComponentsInChildren<IGimmickManager>());
 
         // qƒIƒuƒWƒFƒNƒg“à‚ÌIResettablerÀ‘•‚ğ‘S‚Äæ“¾‚µ‚Ä“o˜^
         resetManagers.AddRange(GetComponentsInChildren<IResettable>());
 
+        // “ñdw“Ç–h~
+        GameManager.Instance.OnStateChanged -= HandleStateChange;
         GameManager.Instance.OnStateChanged += HandleStateChange;
     }
 
@@ -96,7 +100,7 @@ public class GimmickManger : MonoBehaviour
     /// </summary>
     public void OnGameReset()
     {
-        foreach (IResettable resettable in resetManagers.OfType<IResettable>())
+        foreach (IResettable resettable in resetManagers)
         {
             resettable.OnGameReset();
         }

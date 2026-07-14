@@ -47,10 +47,7 @@ public class ItemManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (GameManager.Instance == null)
-        {
-            return;
-        }
+        if (GameManager.Instance == null) return;
 
         // ゲームステート変更の購読解除
         GameManager.Instance.OnStateChanged -= HandleStateChange;
