@@ -25,28 +25,26 @@ public class Saw : MonoBehaviour
     // 初期化済みフラグ
     private bool isInitialized = false;
 
-    public bool IsInitialized
-    {
-        get { return isInitialized;  }
-    }
-
     private Sequence seq;
 
-    public void Initialize()
+    private void Awake()
+    {
+        // 元のZ座標を保存
+        originalZ = transform.position.z;
+    }
+
+    private void Initialize()
     {
         // 初期化済み状態にする
         isInitialized = true;
 
-        // 元のZ座標を保存
-        originalZ = transform.position.z;
-
         // スタート地点に配置
         transform.position = new Vector3(startPos.x, startPos.y, originalZ);
+        SawMove();
     }
 
-    public void SawMove()
+    private void SawMove()
     {
-
         Vector3 start = new Vector3(startPos.x, startPos.y, originalZ);
         Vector3 goal = new Vector3(goalPos.x, goalPos.y, originalZ);
 
@@ -56,7 +54,8 @@ public class Saw : MonoBehaviour
            .AppendInterval(waitTime)
            .Append(transform.DOMove(start, duration).SetEase(easeType))
            .AppendInterval(waitTime)
-           .SetLoops(-1);
+           .SetLoops(-1)
+           .SetLink(gameObject);
     }
 
     /// <summary>
@@ -64,7 +63,8 @@ public class Saw : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
-        transform.DOKill();
+        // 保険のKill
+        seq?.Kill();
     }
 
     /// <summary>
@@ -72,13 +72,20 @@ public class Saw : MonoBehaviour
     /// </summary>
     public void DoPlay()
     {
-        seq?.Play();
+        if (!isInitialized)
+        {
+            Initialize();
+        }
+        else
+        {
+            seq?.Play();
+        }
     }
 
     /// <summary>
     /// シーケンスを一時停止する
     /// </summary>
-    public void DoStop()
+    public void DoPause()
     {
         seq?.Pause();
     }

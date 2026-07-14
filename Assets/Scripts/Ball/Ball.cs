@@ -6,9 +6,15 @@ public class Ball : MonoBehaviour
 
     private Collider2D col;
 
-    [SerializeField] private Conveyor currentConveyor;
+    private Conveyor currentConveyor;
 
     [SerializeField] private BallManager ballManager;
+
+    // ゲームオーバーイベント発火済みフラグ
+    bool isDead = false;
+
+    // 物理が有効状態かどうかを表すフラグ
+    bool physicsEnabled = false;
 
     /// <summary>
     /// ゲームオーバー時に発火するイベント
@@ -23,6 +29,9 @@ public class Ball : MonoBehaviour
 
     public void Initialize(BallManager manager)
     {
+        isDead = false;
+        physicsEnabled = false;
+
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
@@ -52,6 +61,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     public void EnablePhysics()
     {
+        physicsEnabled = true;
         col.enabled = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 1f;
@@ -62,6 +72,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     public void DisablePhysics()
     {
+        physicsEnabled = false;
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = 0f;
@@ -69,6 +80,8 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!physicsEnabled) return;
+
         if (currentConveyor != null)
         {
             Vector2 dir;
@@ -95,14 +108,20 @@ public class Ball : MonoBehaviour
         }
 
         // 指定した座標よりも下に落ちたら
-        if (this.transform.position.y < resetTriggerPosY)
+        if (!isDead && this.transform.position.y < resetTriggerPosY)
         {
-            PositionReset();
+            isDead = true;
+
+            /// ボールが落下時にゲームオーバーイベントを発火
+            OnBallGameOver?.Invoke();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // 死亡後は処理しない
+        if (isDead) return; 
+
         ContactPoint2D contact = collision.GetContact(0);
 
         // 上側から触れた場合
@@ -119,6 +138,9 @@ public class Ball : MonoBehaviour
         // Trapに接触した場合はゲームオーバー
         if (collision.gameObject.CompareTag(Tags.Trap))
         {
+            // イベント発火済みに変更
+            isDead = true;
+
             // ボールのゲームオーバーイベントを発火
             OnBallGameOver?.Invoke();
         }
@@ -144,14 +166,5 @@ public class Ball : MonoBehaviour
                 currentConveyor = null;
             }
         }
-    }
-
-    /// <summary>
-    /// ボールが落下時にゲームオーバーイベントを発火
-    /// <see cref="BallManager.GameOver"/>
-    /// </summary>
-    private void PositionReset()
-    {
-        OnBallGameOver?.Invoke();
     }
 }

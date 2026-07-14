@@ -3,7 +3,7 @@ using UnityEngine;
 public class DisappearingBlock : MonoBehaviour
 {
     [Header("消えるまでの時間"), SerializeField]
-    private float disappearTIme = 0.8f;
+    private float disappearTime = 0.8f;
 
     // 消滅処理中かどうかを管理するフラグ
     private bool disappearing = false;
@@ -12,10 +12,10 @@ public class DisappearingBlock : MonoBehaviour
     private float timer = 0f;
 
     // 見た目の表示・非表示を制御
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     // 当たり判定の有効・無効を制御
-    [SerializeField] private Collider2D col;
+    private Collider2D col;
 
     // ブロックが消えた(壊れた)時に鳴らす効果音
     [SerializeField] private AudioClip audioClip;
@@ -33,12 +33,13 @@ public class DisappearingBlock : MonoBehaviour
 
     private void Update()
     {
+        // 消滅開始した場合
         if (disappearing)
         {
             timer += Time.deltaTime;
 
             // 指定時間を超えた場合
-            if (timer > disappearTIme)
+            if (timer > disappearTime)
             {
                 HideBlock();
             }

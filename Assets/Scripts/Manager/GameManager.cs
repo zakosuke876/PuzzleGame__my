@@ -118,10 +118,6 @@ public class GameManager : MonoBehaviour
         ballManager.OnBallRespawn -= HandleBallRespawned;
         ballManager.OnBallDead -= HandleBallDead;
         ballManager.OnBallSpawned -= HandleBallSpawned;
-
-
-        //countdownUI.OnCountDownFinished -= Initialize;
-        //countdownUI.OnCountDownFinished -= RetryStart;
     }
 
     private void Update()
@@ -189,14 +185,4 @@ public class GameManager : MonoBehaviour
 
         StartCountDownOnce(ballManager.Retry);
     }
-
-    /// <summary>
-    /// カウントダウン完了後にリトライ
-    /// </summary>
-    /*public void RetryStart()
-    {
-        countdownUI.OnCountDownFinished -= RetryStart;
-
-        ballManager.Retry();
-    }*/
 }

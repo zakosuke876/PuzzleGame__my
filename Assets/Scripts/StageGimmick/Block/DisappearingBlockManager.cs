@@ -1,22 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 public class DisappearingBlockManager : MonoBehaviour,IResettable
 {
-    [SerializeField] private List<GameObject> blockObjects = new List<GameObject>();
-
+    [SerializeField] private List<DisappearingBlock> blocks = new List<DisappearingBlock>();
 
     /// <summary>
     /// GameOverやRespawn時にブロックをリセットする
     /// </summary>
     public void OnGameReset()
     {
-        foreach (GameObject obj in blockObjects)
+        foreach (var block in blocks)
         {
-            if (obj == null) continue;
-
-            DisappearingBlock block = obj.GetComponent<DisappearingBlock>();
-
             if (block == null) continue;
 
             block.ResetBlock();
