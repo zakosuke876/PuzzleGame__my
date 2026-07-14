@@ -42,25 +42,11 @@ public class ScoreUIManager : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Game:
-
-
-                break;
-
-            case GameState.Pause:
-
-                break;
-
             case GameState.GameClear:
 
                 InitShowOutlines();
 
                 ResetStars();
-
-                break;
-
-            case GameState.GameOver:
-
 
                 break;
         }

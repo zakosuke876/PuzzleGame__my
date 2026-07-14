@@ -72,22 +72,6 @@ public class BallManager : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Game:
-
-                break;
-
-            case GameState.Pause:
-
-                break;
-
-            case GameState.Respawn:
-
-                break;
-
-            case GameState.GameOver:
-
-                break;
-
             case GameState.Reset:
 
                 if (currentBall != null)

@@ -45,10 +45,6 @@ public class BGMManager : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Title:
-
-                break;
-
             case GameState.Game:
 
                 // BGM‚ªÄ¶’†‚Å‚È‚¢ê‡Ä¶‚·‚é
@@ -71,7 +67,7 @@ public class BGMManager : MonoBehaviour
 
                 break;
 
-             case  GameState.GameClear:
+            case  GameState.GameClear:
 
                 audioSource.Stop();
 

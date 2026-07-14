@@ -80,10 +80,6 @@ public class ItemManager : MonoBehaviour
 
                 break;
 
-            case GameState.Pause:
-
-                break;
-
             case GameState.Respawn:
 
                 ResetAll();
