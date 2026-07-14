@@ -8577,6 +8577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  debugState: 0
   gimmickManager: {fileID: 454744956}
   itemManager: {fileID: 1831065473}
   ballManager: {fileID: 790175806}
@@ -9450,8 +9451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGMManager
   gameOverClip: {fileID: 8300000, guid: eed8f416b00ece94c8d8ddd80cb57fc5, type: 3}
+  gameClearClip: {fileID: 8300000, guid: 31846648ac5790240850782e507954e4, type: 3}
   bgmClip: {fileID: 8300000, guid: 630e96d6b7b058f48a00522a5e46c415, type: 3}
-  volume: 0.2
+  volume: 0.5
 --- !u!4 &1735662549
 Transform:
   m_ObjectHideFlags: 0
