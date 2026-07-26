@@ -24,6 +24,8 @@ public class BallManager : MonoBehaviour
     [SerializeField] private float collisionEnableDelay = 0.5f; // コライダー有効化までの時間
 
     // 再生成中かどうか
+    // 生成/破棄のDOTweenアニメーション中に再度SpawnBall等が呼ばれて
+    // 多重生成・多重破棄が起きるのを防ぐためのフラグ
     private bool isRespawning = false;
 
     /// <summary>

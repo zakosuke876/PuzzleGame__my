@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class ConveyorController : MonoBehaviour
 {
-    [SerializeField] private GridMng gridMng;
+    [SerializeField] private GridManager gridManager;
 
     // 現在選択されているオブジェクト
     private GameObject selectedObject;
@@ -24,12 +24,12 @@ public class ConveyorController : MonoBehaviour
     private void Initialize()
     {
         // 選択オブジェクト変更イベント購読
-        gridMng.OnSelectedObjectChanged += OnSelectedChanged;
+        gridManager.OnSelectedObjectChanged += OnSelectedChanged;
     }
 
     private void OnDisable()
     {
-        gridMng.OnSelectedObjectChanged -= OnSelectedChanged;
+        gridManager.OnSelectedObjectChanged -= OnSelectedChanged;
     }
 
     /// <summary>

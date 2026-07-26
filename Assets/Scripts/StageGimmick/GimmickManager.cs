@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GimmickManger : MonoBehaviour
+public class GimmickManager : MonoBehaviour
 {
     // IGimmickManagerを実装したコンポーネントを子から集めて保持するリスト
     private List<IGimmickManager> managers = new List<IGimmickManager>();

@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private GimmickManger gimmickManager;
+    [SerializeField] private GimmickManager gimmickManager;
 
     [SerializeField] private ItemManager itemManager;
 

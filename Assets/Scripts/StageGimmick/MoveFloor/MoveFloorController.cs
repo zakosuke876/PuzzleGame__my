@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class MoveFloorController : MonoBehaviour
 {
-    [SerializeField] private GridMng gridMng;
+    [SerializeField] private GridManager gridManager;
 
     [SerializeField] private float floorMoveSpeed = 0f;
 
@@ -26,12 +26,12 @@ public class MoveFloorController : MonoBehaviour
     private void Initialize()
     {
         // 選択オブジェクト変更イベント購読
-        gridMng.OnSelectedObjectChanged += OnSelectedChanged;
+        gridManager.OnSelectedObjectChanged += OnSelectedChanged;
     }
 
     private void OnDisable()
     {
-        gridMng.OnSelectedObjectChanged -= OnSelectedChanged;
+        gridManager.OnSelectedObjectChanged -= OnSelectedChanged;
     }
 
     /// <summary>

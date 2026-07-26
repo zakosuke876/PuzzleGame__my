@@ -522,16 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0340e57903d09d34ab7b9b4a14fc2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlockManager
-  blockObjects:
-  - {fileID: 1781178224}
-  - {fileID: 1377542495}
-  - {fileID: 609817638}
-  - {fileID: 1866458463}
-  - {fileID: 555951425}
-  - {fileID: 727432695}
-  - {fileID: 1449376223}
-  - {fileID: 1432581676}
-  - {fileID: 1368096562}
+  blocks: []
 --- !u!4 &136895704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6664202303114339708, guid: 912804593ce28e647b6602c2857f1fa6, type: 3}
@@ -1815,6 +1806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  debugState: 0
   gimmickManager: {fileID: 1874175073}
   itemManager: {fileID: 1592295882}
   ballManager: {fileID: 266067744}
@@ -1963,6 +1955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGMManager
   gameOverClip: {fileID: 8300000, guid: eed8f416b00ece94c8d8ddd80cb57fc5, type: 3}
+  gameClearClip: {fileID: 8300000, guid: 31846648ac5790240850782e507954e4, type: 3}
   bgmClip: {fileID: 8300000, guid: 630e96d6b7b058f48a00522a5e46c415, type: 3}
   volume: 0.2
 --- !u!4 &592144865
@@ -5961,6 +5954,10 @@ PrefabInstance:
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: spriteRenderer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
