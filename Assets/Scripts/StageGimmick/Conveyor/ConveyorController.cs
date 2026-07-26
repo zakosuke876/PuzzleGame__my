@@ -67,6 +67,7 @@ public class ConveyorController : MonoBehaviour
             if (conveyor.IsMovingRight == moveRight) return;
             conveyor.IsMovingRight = moveRight;
 
+            // çƒê∂íÜÇÕëΩèdçƒê∂ÇµÇ»Ç¢
             if (audioSource.isPlaying) return;
             audioSource.PlayOneShot(audioClip, volume);
         }

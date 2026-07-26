@@ -16,6 +16,7 @@ public class StageButtonMedalSetter : MonoBehaviour
     [SerializeField] private Image stage3Medal;
     void Start()
     {
+        // 全ステージ未クリア状態にしてから、保存済みのランクだけ上書き表示する
         Initialize();
         ApplySavedRanks();
     }

@@ -55,7 +55,7 @@ public class Saw : MonoBehaviour
            .Append(transform.DOMove(start, duration).SetEase(easeType))
            .AppendInterval(waitTime)
            .SetLoops(-1)
-           .SetLink(gameObject);
+           .SetLink(gameObject); // ‚±‚ÌgameObject‚ª”jŠü‚³‚ê‚½Žž‚ÉTween‚àŽ©“®‚ÅKill‚³‚ê‚é‚æ‚¤‚É‚·‚é
     }
 
     /// <summary>

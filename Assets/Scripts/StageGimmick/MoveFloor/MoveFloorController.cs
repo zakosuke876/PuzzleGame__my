@@ -10,7 +10,7 @@ public class MoveFloorController : MonoBehaviour
     // 現在選択されているオブジェクト
     private GameObject selectedObject;
 
-    // MpveFloor移動時に鳴らす効果音
+    // MoveFloor移動時に鳴らす効果音
     [SerializeField] private AudioClip audioClip;
     private AudioSource audioSource;
     [Header("SEの音量"), SerializeField] private float volume = 1f;
@@ -58,6 +58,7 @@ public class MoveFloorController : MonoBehaviour
             Vector3 localMove = (Vector3)(move * floorMoveSpeed * Time.deltaTime);
             selectedObject.transform.position += localMove;
 
+            // 再生中は多重再生しない
             if (audioSource.isPlaying) return;
             audioSource.PlayOneShot(audioClip, volume);
         }

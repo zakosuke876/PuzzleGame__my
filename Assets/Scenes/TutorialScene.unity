@@ -2455,7 +2455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7542f7d0978216943acd217f3f99294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorController
-  gridMng: {fileID: 745909491}
+  gridManager: {fileID: 745909491}
   audioClip: {fileID: 8300000, guid: 8b3b245826f8a9d4e886c687f86d1a32, type: 3}
   volume: 0.5
 --- !u!82 &745909489
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f535c4a25016e49903cfd39b1cfac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveFloorController
-  gridMng: {fileID: 745909491}
+  gridManager: {fileID: 745909491}
   floorMoveSpeed: 5
   audioClip: {fileID: 8300000, guid: 66869cd890a131b4082a983e0cde1b32, type: 3}
   volume: 0.3

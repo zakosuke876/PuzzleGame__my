@@ -1295,11 +1295,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1515094931441658105, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
   m_PrefabInstance: {fileID: 1836639197}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &225825664 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
-  m_PrefabInstance: {fileID: 893414261}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &225825668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
@@ -13772,6 +13767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BGMManager
   gameOverClip: {fileID: 8300000, guid: eed8f416b00ece94c8d8ddd80cb57fc5, type: 3}
+  gameClearClip: {fileID: 0}
   bgmClip: {fileID: 8300000, guid: 630e96d6b7b058f48a00522a5e46c415, type: 3}
   volume: 0.2
 --- !u!4 &287141638
@@ -14792,10 +14788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0340e57903d09d34ab7b9b4a14fc2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlockManager
-  blockObjects:
-  - {fileID: 1897651068}
-  - {fileID: 225825664}
-  - {fileID: 1499123695}
+  blocks: []
 --- !u!4 &532216857
 Transform:
   m_ObjectHideFlags: 0
@@ -17856,11 +17849,6 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616997012846497691, guid: 912804593ce28e647b6602c2857f1fa6, type: 3}
   m_PrefabInstance: {fileID: 1401842312}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1499123695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
-  m_PrefabInstance: {fileID: 1205648171}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1499123699 stripped
 Transform:
@@ -24118,6 +24106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  debugState: 0
   gimmickManager: {fileID: 1436498552}
   itemManager: {fileID: 1274114581}
   ballManager: {fileID: 265447653}
@@ -24332,7 +24321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7542f7d0978216943acd217f3f99294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorController
-  gridMng: {fileID: 1780399173}
+  gridManager: {fileID: 1780399173}
   audioClip: {fileID: 8300000, guid: 8b3b245826f8a9d4e886c687f86d1a32, type: 3}
   volume: 0.5
 --- !u!114 &1780399169
@@ -24347,7 +24336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f535c4a25016e49903cfd39b1cfac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveFloorController
-  gridMng: {fileID: 1780399173}
+  gridManager: {fileID: 1780399173}
   floorMoveSpeed: 5
   audioClip: {fileID: 8300000, guid: 66869cd890a131b4082a983e0cde1b32, type: 3}
   volume: 0.3
@@ -24793,11 +24782,6 @@ MonoBehaviour:
   countdownText: {fileID: 2116859042}
   startText: START!!
   countdownTime: 3
---- !u!1 &1897651068 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
-  m_PrefabInstance: {fileID: 1967554345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1897651072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
