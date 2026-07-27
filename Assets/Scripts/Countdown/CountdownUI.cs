@@ -11,6 +11,7 @@ public class CountdownUI : MonoBehaviour
     [Header("カウントダウン終了後に表示する文字列"), SerializeField] private string startText = "START!!";
 
     [SerializeField] private int countdownTime = 3;
+    [SerializeField] private float countInterval = 1.0f;
 
     /// <summary>
     /// カウントダウン終了時に発火するイベント
@@ -37,12 +38,12 @@ public class CountdownUI : MonoBehaviour
         for (int i = countdownTime; i > 0; i--)
         {
             countdownText.text = i.ToString();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(countInterval);
         }
 
         countdownText.text = startText;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(countInterval);
 
         countdownPanel.gameObject.SetActive(false);
         

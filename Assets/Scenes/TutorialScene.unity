@@ -167,6 +167,7 @@ MonoBehaviour:
   countdownText: {fileID: 1553568689}
   startText: START!!
   countdownTime: 3
+  countInterval: 1
 --- !u!1001 &49104775
 PrefabInstance:
   m_ObjectHideFlags: 0
