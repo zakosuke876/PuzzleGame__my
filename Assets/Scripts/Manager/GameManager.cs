@@ -29,6 +29,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        // 破棄時に自分がInstanceの場合片付ける
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
+
     [SerializeField] private GimmickManager gimmickManager;
 
     [SerializeField] private ItemManager itemManager;
@@ -73,20 +82,29 @@ public class GameManager : MonoBehaviour
         // Pキーでポーズ
         if (Keyboard.current.pKey.wasPressedThisFrame)
         {
-            if (currentState == GameState.Pause)
-            {
-                ChangeState(GameState.Game);
-            }
-            else if (currentState == GameState.Game)
-            {
-                ChangeState(GameState.Pause);
-            }
+            TogglePose();
         }
 
         // エスケープキーでゲーム終了
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             Application.Quit();
+        }
+    }
+
+    /// <summary>
+    ///         // Pause状態とGame状態を切り替える
+    /// </summary>
+    private void TogglePose()
+    {
+
+        if (currentState == GameState.Pause)
+        {
+            ChangeState(GameState.Game);
+        }
+        else if (currentState == GameState.Game)
+        {
+            ChangeState(GameState.Pause);
         }
     }
 
