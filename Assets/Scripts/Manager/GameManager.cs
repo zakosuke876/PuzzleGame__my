@@ -93,11 +93,10 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    ///         // Pauseó‘Ô‚ÆGameó‘Ô‚ğØ‚è‘Ö‚¦‚é
+    /// Pauseó‘Ô‚ÆGameó‘Ô‚ğØ‚è‘Ö‚¦‚é
     /// </summary>
     private void TogglePose()
     {
-
         if (currentState == GameState.Pause)
         {
             ChangeState(GameState.Game);
