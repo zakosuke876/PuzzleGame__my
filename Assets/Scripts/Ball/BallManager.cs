@@ -28,22 +28,6 @@ public class BallManager : MonoBehaviour
     // 多重生成・多重破棄が起きるのを防ぐためのフラグ
     private bool isRespawning = false;
 
-    /// <summary>
-    /// ゲームオーバー時に発火するイベント
-    /// </summary>
-    public event System.Action OnBallDead;
-
-    /// <summary>
-    /// ボールのリスポーン要求に発火するイベント
-    /// </summary>
-    public event System.Action OnBallRespawn;
-
-    /// <summary>
-    /// ボール生成完了時に発火
-    /// </summary>
-    public event System.Action OnBallSpawned;
-
-
     public void Initialize()
     {
         // ステート変更を購読
@@ -128,7 +112,7 @@ public class BallManager : MonoBehaviour
                          currentBall.gameObject.layer = LayerMask.NameToLayer(Layers.Player);
                          currentBall.EnablePhysics();
                          isRespawning = false;
-                         OnBallSpawned?.Invoke();
+                         GameManager.Instance.ChangeState(GameState.Game);
                      });
     }
 
@@ -152,25 +136,6 @@ public class BallManager : MonoBehaviour
                    });
     }
 
-    /// <summary>
-    /// ゲーム状態をリスポーンに変更
-    /// ボールを再生成
-    /// </summary>
-    public void RespawnBall()
-    {
-        if (currentBall == null) return;
-
-        if (isRespawning) return;
-
-        isRespawning = true;
-
-        currentBall.gameObject.layer = LayerMask.NameToLayer(Layers.NoItemCollision);
-
-        OnBallRespawn?.Invoke();
-
-        DestroyAnimation(SpawnBall);
-    }
-
     public void GameOver()
     {
         if (currentBall == null) return;
@@ -181,7 +146,7 @@ public class BallManager : MonoBehaviour
 
         DestroyAnimation(() =>
         {
-            OnBallDead?.Invoke();
+            GameManager.Instance.ChangeState(GameState.GameOver);
         });
     }
 

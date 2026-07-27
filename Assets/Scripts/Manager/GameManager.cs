@@ -15,18 +15,6 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-
-#if UNITY_EDITOR
-    [Header("--- Debug ---")]
-    [SerializeField] private GameState debugState;
-
-    [ContextMenu("Force Change State")]
-    private void DebugChangeState()
-    {
-        ChangeState(debugState);
-    }
-#endif
-
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -58,23 +46,6 @@ public class GameManager : MonoBehaviour
     // 最初はタイトル状態
     [SerializeField] private GameState currentState = GameState.Title;
 
-    /// <summary>
-    /// ボールがリスポーン要求された時
-    /// </summary>
-    /// <see cref="BallManager.OnBallRespawn"/>
-    private void HandleBallRespawned() => ChangeState(GameState.Respawn);
-
-    /// <summary>
-    /// ボールが死亡した時
-    /// </summary>
-    /// <see cref="BallManager.OnBallDead"/>
-    private void HandleBallDead() => ChangeState(GameState.GameOver);
-
-    /// <summary>
-    /// ボール生成完了時
-    /// </summary>
-    /// <see cref="BallManager.OnBallSpawned"/>
-    private void HandleBallSpawned() => ChangeState(GameState.Game);
     private void Start()
     {
         if (countdownUI != null)
@@ -96,28 +67,6 @@ public class GameManager : MonoBehaviour
 
         countdownUI.OnCountDownFinished += Handler;
         countdownUI.StartCountdown();
-    }
-
-    private void OnEnable()
-    {
-        // 重複インスタンス(Awakeで破棄予定)は購読しない
-        if (Instance != this) return;
-
-        // ボールの状態変化イベントを購読
-        ballManager.OnBallRespawn += HandleBallRespawned;
-        ballManager.OnBallDead += HandleBallDead;
-        ballManager.OnBallSpawned += HandleBallSpawned;
-    }
-
-    private void OnDisable()
-    {
-        // 購読していない場合は処理しない
-        if (Instance != this) return;
-
-        // イベント購読解除
-        ballManager.OnBallRespawn -= HandleBallRespawned;
-        ballManager.OnBallDead -= HandleBallDead;
-        ballManager.OnBallSpawned -= HandleBallSpawned;
     }
 
     private void Update()

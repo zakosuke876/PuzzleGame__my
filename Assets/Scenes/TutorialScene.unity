@@ -179,6 +179,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBelt_Static
       objectReference: {fileID: 0}
+    - target: {fileID: 6574152318699449293, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574152318699449293, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574152318699449293, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.39215687
+      objectReference: {fileID: 0}
     - target: {fileID: 8014404911213881648, guid: 61f060a42f89ed4479d645df4fc3cee1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.048133
@@ -1806,7 +1818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  debugState: 0
   gimmickManager: {fileID: 1874175073}
   itemManager: {fileID: 1592295882}
   ballManager: {fileID: 266067744}
