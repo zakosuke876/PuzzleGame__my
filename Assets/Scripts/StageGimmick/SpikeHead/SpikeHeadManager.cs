@@ -11,16 +11,7 @@ public class SpikeHeadManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (spikeHead == null) continue;
 
-            // ˆê“x‚¾‚¯‰Šú‰»‚·‚é
-            if (!spikeHead.IsInitialized)
-            {
-                spikeHead.Initialize();
-                spikeHead.SpikeHeadMove();
-            }
-            else // 2‰ñ–ÚˆÈ~‚Íó‘Ô‚¾‚¯ÄŠJ‚µÄ¶¬‚ğ–h‚®
-            {
-                spikeHead.DoPlay();
-            }
+            spikeHead.Play();
         }
     }
 
@@ -30,7 +21,7 @@ public class SpikeHeadManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (spikeHead == null) continue;
 
-            spikeHead.DoStop();
+            spikeHead.Stop();
         }
     }
 

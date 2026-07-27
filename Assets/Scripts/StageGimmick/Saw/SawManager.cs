@@ -11,7 +11,7 @@ public class SawManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (saw == null) continue;
 
-            saw.DoPlay();
+            saw.Play();
         }
     }
 
@@ -21,7 +21,7 @@ public class SawManager : MonoBehaviour, IGimmickManager, IResettable
         {
             if (saw == null) continue;
 
-            saw.DoPause();
+            saw.Stop();
         }
     }
 

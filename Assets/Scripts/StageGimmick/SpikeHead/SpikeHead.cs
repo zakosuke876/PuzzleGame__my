@@ -1,8 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 
-public class SpikeHead : MonoBehaviour
+public class SpikeHead : MonoBehaviour, IGimmick
 {
     [Header("スタート位置"), SerializeField]
     private Vector2 startPos;
@@ -31,18 +30,13 @@ public class SpikeHead : MonoBehaviour
     // 初期化済みフラグ
     private bool isInitialized = false;
 
-    public bool IsInitialized
-    {
-        get { return isInitialized; }
-    }
-
-    private DG.Tweening.Sequence seq;
+    private Sequence seq;
 
     /// <summary>
     /// 初期化処理(位置リセット・状態設定)
     /// ※1度だけ実行される
     /// </summary>
-    public void Initialize()
+    private void Initialize()
     {
         // 初期化済み状態にする
         isInitialized = true;
@@ -57,7 +51,7 @@ public class SpikeHead : MonoBehaviour
     /// <summary>
     /// SpikeHeadギミックを作動
     /// </summary>
-    public void SpikeHeadMove()
+    private void SpikeHeadMove()
     {
         seq = DOTween.Sequence();
 
@@ -65,29 +59,30 @@ public class SpikeHead : MonoBehaviour
                 .AppendInterval(waitTime)
                 .Append(transform.DOMove(startPos, backTime).SetEase(backEase))
                 .AppendInterval(waitTime)
-                .SetLoops(-1);
-    }
-
-    /// <summary>
-    /// オブジェクト破棄時にTweenを全停止
-    /// </summary>
-    void OnDestroy()
-    {
-        transform.DOKill();
+                .SetLoops(-1)
+                .SetLink(gameObject); // このgameObjectが破棄された時にTweenも自動でKillされるようにする
     }
 
     /// <summary>
     /// 一時停止中のシーケンスを再開する
     /// </summary>
-    public void DoPlay()
+    public void Play()
     {
-        seq?.Play();
+        if (!isInitialized)
+        {
+            Initialize();
+            SpikeHeadMove();
+        }
+        else
+        {
+            seq?.Play();
+        }
     }
 
     /// <summary>
     /// シーケンスを一時停止する
     /// </summary>
-    public void DoStop()
+    public void Stop()
     {
         seq?.Pause();
     }

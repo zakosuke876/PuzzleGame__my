@@ -1,8 +1,7 @@
-using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Rendering.UI;
+using UnityEngine;
 
-public class Needle : MonoBehaviour
+public class Needle : MonoBehaviour, IGimmick
 {
     [Header("横移動設定")]
 
@@ -48,23 +47,12 @@ public class Needle : MonoBehaviour
     // 初期化済みフラグ
     private bool isInitialized = false;
 
-    /// <summary>
-    /// 初期化済みかどうかを外部から参照する
-    /// </summary>
-    public bool IsInitialized
-    {
-        get { return isInitialized; }
-    }
-
     // DOTweenのシーケンス(縦・横それぞれ保持して外部から制御する)
     private Sequence verticalSeq;
 
     private Sequence horizontalSeq;
 
-    /// <summary>
-    /// 針の初期化処理
-    /// </summary>
-    public void Initialize()
+    private void Initialize()
     {
         // 初期化済み状態にする
         isInitialized = true;
@@ -76,7 +64,7 @@ public class Needle : MonoBehaviour
     /// <summary>
     /// isVerticalの設定に応じて縦または横移動する
     /// </summary>
-    public void Move()
+    private void Move()
     {
         if (isVertical)
         {
@@ -91,7 +79,7 @@ public class Needle : MonoBehaviour
     /// <summary>
     /// 横移動のTweenシーケンスを作成してループ再生する
     /// </summary>
-    public void MoveNeedleHorizontal()
+    private void MoveNeedleHorizontal()
     {
         transform.position = new Vector3(horizontalStartPos.x, horizontalStartPos.y, originalZ);
 
@@ -101,13 +89,14 @@ public class Needle : MonoBehaviour
                            .Append(transform.DOMove(horizontalEndPos, moveDuration))
                            .Append(transform.DOMove(hiddenPos, showTime))
                            .Append(transform.DOMove(horizontalStartPos, moveDuration))
-                           .SetLoops(-1);
+                           .SetLoops(-1)
+                           .SetLink(gameObject); // このgameObjectが破棄された時にTweenも自動でKillされるようにする
     }
 
     /// <summary>
     /// 縦移動のTweenシーケンスを作成してループ再生する
     /// </summary>
-    public void MoveNeedleVertical()
+    private void MoveNeedleVertical()
     {
         transform.position = new Vector3(verticalStartPos.x, verticalStartPos.y, originalZ);
 
@@ -116,36 +105,34 @@ public class Needle : MonoBehaviour
         verticalSeq.Append(transform.DOMove(verticalEndPos, moveDuration))
                          .AppendInterval(delayTime)
                          .Append(transform.DOMove(verticalStartPos, moveDuration))
-                         .SetLoops(-1);
+                         .SetLoops(-1)
+                         .SetLink(gameObject);
     }
 
-    /// <summary>
-    /// オブジェクト破棄時にTweenを全停止
-    /// </summary>
-    private void OnDestroy()
+    public void Play()
     {
-        transform.DOKill();
-    }
-
-    /// <summary>
-    /// 一時停止中のシーケンスを再開する
-    /// </summary>
-    public void DoPlay()
-    {
-        if (isVertical)
+        if (!isInitialized)
         {
-            verticalSeq?.Play();
+            Initialize();
+            Move();
         }
         else
         {
-            horizontalSeq?.Play();
+            if (isVertical)
+            {
+                verticalSeq?.Play();
+            }
+            else
+            {
+                horizontalSeq?.Play();
+            }
         }
     }
 
     /// <summary>
     /// シーケンスを一時停止する
     /// </summary>
-    public void DoStop()
+    public void Stop()
     {
         if (isVertical)
         {

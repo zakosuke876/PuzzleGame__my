@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 
-public class Saw : MonoBehaviour
+public class Saw : MonoBehaviour, IGimmick
 {
     [Header("スタート地点"), SerializeField]
     private Vector2 startPos;
@@ -27,20 +27,16 @@ public class Saw : MonoBehaviour
 
     private Sequence seq;
 
-    private void Awake()
-    {
-        // 元のZ座標を保存
-        originalZ = transform.position.z;
-    }
-
     private void Initialize()
     {
         // 初期化済み状態にする
         isInitialized = true;
 
+        // 元のZ座標を保存
+        originalZ = transform.position.z;
+
         // スタート地点に配置
         transform.position = new Vector3(startPos.x, startPos.y, originalZ);
-        SawMove();
     }
 
     private void SawMove()
@@ -59,22 +55,14 @@ public class Saw : MonoBehaviour
     }
 
     /// <summary>
-    /// オブジェクト破棄時にTweenを全停止
-    /// </summary>
-    void OnDestroy()
-    {
-        // 保険のKill
-        seq?.Kill();
-    }
-
-    /// <summary>
     /// 一時停止中のシーケンスを再開する
     /// </summary>
-    public void DoPlay()
+    public void Play()
     {
         if (!isInitialized)
         {
             Initialize();
+            SawMove();
         }
         else
         {
@@ -85,7 +73,7 @@ public class Saw : MonoBehaviour
     /// <summary>
     /// シーケンスを一時停止する
     /// </summary>
-    public void DoPause()
+    public void Stop()
     {
         seq?.Pause();
     }
