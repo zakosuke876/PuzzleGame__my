@@ -41,12 +41,6 @@ public class ResultUIManager : MonoBehaviour
 
                 break;
 
-            case GameState.Respawn:
-
-                HideAllPanels();
-
-                break;
-
             case GameState.GameClear:
 
                 ShowPanel(gameClearPanel);

@@ -80,14 +80,6 @@ public class ItemManager : MonoBehaviour
 
                 break;
 
-            case GameState.Respawn:
-
-                ResetAll();
-
-                gemUi.ResetGemColor();
-
-                break;
-
             case GameState.GameOver:
 
                 ResetAll();

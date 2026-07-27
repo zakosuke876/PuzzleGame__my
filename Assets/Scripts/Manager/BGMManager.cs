@@ -62,12 +62,6 @@ public class BGMManager : MonoBehaviour
 
                 break;
 
-            case GameState.Respawn:
-
-                audioSource.Stop();
-
-                break;
-
             case  GameState.GameClear:
 
                 audioSource.Stop();

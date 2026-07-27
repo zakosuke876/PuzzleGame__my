@@ -7,7 +7,6 @@ public enum GameState
     Title,
     Game,
     Pause,
-    Respawn,
     GameClear,
     GameOver,
     Reset

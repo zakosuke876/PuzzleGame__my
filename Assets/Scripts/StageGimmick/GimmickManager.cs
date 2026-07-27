@@ -53,12 +53,6 @@ public class GimmickManager : MonoBehaviour
 
                 break;
 
-            case GameState.Respawn:
-
-                OnGameReset();
-
-                break;
-
             case GameState.GameOver:
 
                 OnGameReset();
