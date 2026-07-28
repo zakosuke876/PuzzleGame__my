@@ -13,10 +13,6 @@ public enum Rank
 
 public class RankManager : MonoBehaviour
 {
-    //[SerializeField] private List<Image> stars = new List<Image>();
-
-    //[SerializeField] private List<Image> starOutlines = new List<Image>();
-
     [SerializeField] private ItemManager itemManager;
 
     [SerializeField] private RankSaveSystem rankSaveSystem;
@@ -27,18 +23,11 @@ public class RankManager : MonoBehaviour
     private const int judgmentRankA = 2;
     private const int judgmentRankB = 1;
 
-    /*// 各ランクで表示する星の数
-    private const int rankACount = 3;
-    private const int rankBCount = 2;
-    private const int rankCCount = 1;*/
-
     /// <summary>
     /// ランクが確定した時に発火するイベント
     /// </summary>
     public event Action<Rank> OnRankDecided;
 
-    // ランクを表示する
-    //[SerializeField] private TextMeshProUGUI rankSetText;
     void Start()
     {
         GameManager.Instance.OnStateChanged += HandleStateChange;
@@ -71,39 +60,6 @@ public class RankManager : MonoBehaviour
         }
     }
 
-    /*/// <summary>
-    /// ゲーム開始時に星を非表示にする
-    /// </summary>
-    private void ResetStars()
-    {
-        foreach (var star in stars)
-        {
-            star.enabled = false;
-        }
-    }*/
-
-    /*/// <summary>
-    /// 星の枠を表示する
-    /// </summary>
-    private void InitShowOutlines()
-    {
-        foreach (var outline in starOutlines)
-        {
-            outline.enabled = true;
-        }
-    }*/
-
-    /*/// <summary>
-    /// ランクに応じた数の星を表示する
-    /// </summary>
-    /// <param name="count">表示する星の数</param>
-    private void ShowStars(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            stars[i].enabled = true;
-        }
-    }*/
 
     /// <summary>
     /// 取得したGem数からランクを判定して返す
@@ -124,45 +80,11 @@ public class RankManager : MonoBehaviour
     /// </summary>
     private void DecideRank()
     {
-        //int starCount;
-
         Rank rank = GetRank();
-
-        /*switch (rank)
-        {
-            case Rank.A:
-
-                starCount = rankACount;
-
-                break;
-
-            case Rank.B:
-
-                starCount = rankBCount;
-
-                break;
-
-            case Rank.C:
-
-                starCount = rankCCount;
-
-                break;
-
-            default:
-
-                // 想定外のランクはランクCと同じとして扱う
-                starCount = rankCCount;
-
-                break;
-        }*/
-
-        //rankSetText.text = $"Rank:{rank}";
 
         rankSaveSystem.SaveRank(rank, currentStageNumber);
 
         OnRankDecided?.Invoke(rank);
-
-        //ShowStars(starCount);
     }
 
 

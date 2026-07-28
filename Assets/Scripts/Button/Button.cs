@@ -21,14 +21,13 @@ public class Button : MonoBehaviour
     {
         // ポーズ中に呼ばれる場合もあるので対策
         Time.timeScale = 1;
+
         // 設定したシーンに遷移する
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName.ToString());
     }
 
     public void GameRetry()
     {
-        // ポーズ中に呼ばれる場合もあるので対策
-        Time.timeScale = 1;
         GameManager.Instance.Retry();
     }
     #endregion

@@ -29,14 +29,12 @@ public class ResultUIManager : MonoBehaviour
         {
             case GameState.Game:
 
-                Time.timeScale = 1;
                 HideAllPanels();
 
                 break;
 
             case GameState.Pause:
 
-                Time.timeScale = 0;
                 ShowPanel(pausePanel);
 
                 break;

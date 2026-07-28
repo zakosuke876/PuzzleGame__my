@@ -138,7 +138,17 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState state)
     {
         currentState = state;
+        ApplyTimeScale(state);
         OnStateChanged?.Invoke(state);
+    }
+
+
+    /// <summary>
+    /// 状態に応じて時間の流れを切り替える（ポーズ中のみ停止）
+    /// </summary>
+    private void ApplyTimeScale(GameState state)
+    {
+        Time.timeScale = (state == GameState.Pause) ? 0f : 1f;
     }
 
     /// <summary>
