@@ -35,6 +35,8 @@ public class Gems : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
+
     /// <summary>
     /// 初期化(初期位置の保存・Gemの状態をリセット)
     /// </summary>
@@ -54,6 +56,7 @@ public class Gems : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// Gemを取得した際の処理
     /// (非表示化・イベント通知)
@@ -70,6 +73,7 @@ public class Gems : MonoBehaviour
         // アイテム取得イベントを発火
         OnCollected?.Invoke(gemType);
     }
+
 
     /// <summary>
     /// Gemの状態を初期化する(表示・位置)

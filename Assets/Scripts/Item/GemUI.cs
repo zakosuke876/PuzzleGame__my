@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static Gems;
 
@@ -7,7 +6,7 @@ public class GemUI : MonoBehaviour
 {
     [SerializeField] private Image[] gemImages;
 
-    private ItemManager ItemManager;
+    [SerializeField] private ItemManager itemManager;
 
     private void Start()
     {
@@ -15,19 +14,23 @@ public class GemUI : MonoBehaviour
         InitializeGemColor();
     }
 
-    /// <summary>
-    /// イベントの登録・UI表示の初期化
-    /// </summary>
-    public void Initialize(ItemManager itemManager)
+    private void OnEnable()
     {
-        // Gem取得時にUIの色を更新する
+        if (itemManager == null) return;
+
         itemManager.OnGemCollected += UpdateGemColor;
-
-        // UI表示をリセットする
         itemManager.OnGemReset += ResetGemColor;
-
-        InitializeGemColor();
     }
+
+    private void OnDisable()
+    {
+        if (itemManager == null) return;
+
+        // イベント登録解除
+        itemManager.OnGemCollected -= UpdateGemColor;
+        itemManager.OnGemReset -= ResetGemColor;
+    }
+
 
     /// <summary>
     /// GemColorを初期化する
@@ -40,6 +43,7 @@ public class GemUI : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// UIのGemの色をリセットする
     /// </summary>
@@ -50,6 +54,7 @@ public class GemUI : MonoBehaviour
             gemImage.color = Color.black;
         }
     }
+
 
     /// <summary>
     /// Gemが取得された際にGemColorを更新する
@@ -75,14 +80,5 @@ public class GemUI : MonoBehaviour
 
                 break;
         }
-    }
-
-    private void OnDisable()
-    {
-        if (ItemManager == null) return;
-
-        // イベント登録解除
-        ItemManager.OnGemCollected -= UpdateGemColor;
-        ItemManager.OnGemReset -= ResetGemColor;
     }
 }

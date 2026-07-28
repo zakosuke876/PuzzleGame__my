@@ -165,8 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SawManager
   saws:
   - {fileID: 838375003}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 614588963}
 --- !u!1 &34924341
 GameObject:
@@ -14788,7 +14786,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0340e57903d09d34ab7b9b4a14fc2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlockManager
-  blocks: []
+  blocks:
+  - {fileID: 1897651073}
+  - {fileID: 952583936}
+  - {fileID: 1499123700}
 --- !u!4 &532216857
 Transform:
   m_ObjectHideFlags: 0
@@ -16398,6 +16399,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &952583936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 893414261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &958443666
 GameObject:
   m_ObjectHideFlags: 0
@@ -17855,6 +17867,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 1205648171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499123700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 1205648171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &1508288468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24106,7 +24129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  debugState: 0
   gimmickManager: {fileID: 1436498552}
   itemManager: {fileID: 1274114581}
   ballManager: {fileID: 265447653}
@@ -24782,11 +24804,23 @@ MonoBehaviour:
   countdownText: {fileID: 2116859042}
   startText: START!!
   countdownTime: 3
+  countInterval: 1
 --- !u!4 &1897651072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 1967554345}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1897651073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 1967554345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &1932181822
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [SerializeField] private GemUI gemUi;
-
     [SerializeField] private Gems[] gems;
 
     /// 取得したGem数
@@ -18,6 +16,7 @@ public class ItemManager : MonoBehaviour
     /// Gemが取得された時に発火するイベント
     /// </summary>
     public event System.Action<Gems.GemType> OnGemCollected;
+
 
     /// <summary>
     /// Gemのリセットが行われた時に発火するイベント
@@ -41,8 +40,6 @@ public class ItemManager : MonoBehaviour
             gem.OnCollected += CollectGem;
             gem.Initialize();
         }
-
-        gemUi.Initialize(this);
     }
 
     private void OnDisable()
@@ -60,6 +57,7 @@ public class ItemManager : MonoBehaviour
             gem.OnCollected -= CollectGem;
         }
     }
+
 
     /// <summary>
     /// ゲームステートの変更処理
@@ -84,15 +82,11 @@ public class ItemManager : MonoBehaviour
 
                 ResetAll();
 
-                gemUi.ResetGemColor();
-
                 break;
 
             case GameState.Reset:
 
                 ResetAll();
-
-                gemUi.ResetGemColor();
 
                 break;
 
