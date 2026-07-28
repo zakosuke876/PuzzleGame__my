@@ -14941,6 +14941,7 @@ MonoBehaviour:
   gemImages:
   - {fileID: 1819524645}
   - {fileID: 1638896422}
+  itemManager: {fileID: 1274114581}
 --- !u!4 &617590407
 Transform:
   m_ObjectHideFlags: 0
@@ -16989,7 +16990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d195e6b63ce76c41b2b7597b7d93b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
-  gemUi: {fileID: 617590406}
   gems:
   - {fileID: 1334626794}
   - {fileID: 1578201222}

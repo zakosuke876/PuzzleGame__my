@@ -100,7 +100,7 @@ public class RankManager : MonoBehaviour
     /// æ“¾‚µ‚½Gem”‚©‚çƒ‰ƒ“ƒN‚ğ”»’è‚·‚é
     /// </summary>
     /// <returns>”»’è‚³‚ê‚½ƒ‰ƒ“ƒN</returns>
-    private  Rank GetRank()
+    private Rank GetRank()
     {
         int count;
 

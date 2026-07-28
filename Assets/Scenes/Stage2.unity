@@ -4764,6 +4764,7 @@ MonoBehaviour:
   countdownText: {fileID: 910453185}
   startText: START!!
   countdownTime: 3
+  countInterval: 1
 --- !u!1001 &554869254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8497,7 +8498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2a1a75e8030f49bc0103874bf3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  debugState: 0
   gimmickManager: {fileID: 454744956}
   itemManager: {fileID: 1831065473}
   ballManager: {fileID: 790175806}
@@ -9685,7 +9685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d195e6b63ce76c41b2b7597b7d93b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
-  gemUi: {fileID: 1839512201}
   gems:
   - {fileID: 1023806341}
   - {fileID: 870104153}
@@ -9812,6 +9811,7 @@ MonoBehaviour:
   gemImages:
   - {fileID: 1400594713}
   - {fileID: 845782105}
+  itemManager: {fileID: 1831065473}
 --- !u!4 &1839512202
 Transform:
   m_ObjectHideFlags: 0
