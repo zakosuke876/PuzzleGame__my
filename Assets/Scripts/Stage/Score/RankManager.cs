@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,9 +13,9 @@ public enum Rank
 
 public class RankManager : MonoBehaviour
 {
-    [SerializeField] private List<Image> stars = new List<Image>();
+    //[SerializeField] private List<Image> stars = new List<Image>();
 
-    [SerializeField] private List<Image> starOutlines = new List<Image>();
+    //[SerializeField] private List<Image> starOutlines = new List<Image>();
 
     [SerializeField] private ItemManager itemManager;
 
@@ -25,20 +26,24 @@ public class RankManager : MonoBehaviour
     // Gem取得数がこの値以上でランク〇
     private const int judgmentRankA = 2;
     private const int judgmentRankB = 1;
-    private const int judgmentRankC = 0;
 
-    // 各ランクで表示する星の数
+    /*// 各ランクで表示する星の数
     private const int rankACount = 3;
     private const int rankBCount = 2;
-    private const int rankCCount = 1;
+    private const int rankCCount = 1;*/
+
+    /// <summary>
+    /// ランクが確定した時に発火するイベント
+    /// </summary>
+    public event Action<Rank> OnRankDecided;
 
     // ランクを表示する
-    [SerializeField] private TextMeshProUGUI rankSetText;
+    //[SerializeField] private TextMeshProUGUI rankSetText;
     void Start()
     {
         GameManager.Instance.OnStateChanged += HandleStateChange;
 
-        ResetStars();
+        //ResetStars();
     }
 
     private void OnDisable()
@@ -48,21 +53,25 @@ public class RankManager : MonoBehaviour
         GameManager.Instance.OnStateChanged -= HandleStateChange;
     }
 
+
+    /// <summary>
+    /// ゲーム状態を受け取り、クリア時にランク判定を行う
+    /// </summary>
     private void HandleStateChange(GameState state)
     {
         switch (state)
         {
             case GameState.GameClear:
 
-                ScoreCheck();
+                DecideRank();
 
-                InitShowOutlines();
+                //InitShowOutlines();
 
                 break;
         }
     }
 
-    /// <summary>
+    /*/// <summary>
     /// ゲーム開始時に星を非表示にする
     /// </summary>
     private void ResetStars()
@@ -71,9 +80,9 @@ public class RankManager : MonoBehaviour
         {
             star.enabled = false;
         }
-    }
+    }*/
 
-    /// <summary>
+    /*/// <summary>
     /// 星の枠を表示する
     /// </summary>
     private void InitShowOutlines()
@@ -82,9 +91,9 @@ public class RankManager : MonoBehaviour
         {
             outline.enabled = true;
         }
-    }
+    }*/
 
-    /// <summary>
+    /*/// <summary>
     /// ランクに応じた数の星を表示する
     /// </summary>
     /// <param name="count">表示する星の数</param>
@@ -94,17 +103,16 @@ public class RankManager : MonoBehaviour
         {
             stars[i].enabled = true;
         }
-    }
+    }*/
 
     /// <summary>
-    /// 取得したGem数からランクを判定する
+    /// 取得したGem数からランクを判定して返す
     /// </summary>
-    /// <returns>判定されたランク</returns>
     private Rank GetRank()
     {
         int count;
 
-        count = GetItemCount();
+        count = GetCollectedGemCount();
 
         if (count >= judgmentRankA) return Rank.A;
         if (count >= judgmentRankB) return Rank.B;
@@ -112,15 +120,15 @@ public class RankManager : MonoBehaviour
     }
 
     /// <summary>
-    /// クリア時のスコアを判定し、ランクと星を表示する
+    /// クリア時のランク判定・保存・通知を行う
     /// </summary>
-    private void ScoreCheck()
+    private void DecideRank()
     {
-        int starCount;
+        //int starCount;
 
         Rank rank = GetRank();
 
-        switch (rank)
+        /*switch (rank)
         {
             case Rank.A:
 
@@ -146,16 +154,22 @@ public class RankManager : MonoBehaviour
                 starCount = rankCCount;
 
                 break;
-        }
+        }*/
 
-        rankSetText.text = $"Rank:{rank}";
+        //rankSetText.text = $"Rank:{rank}";
 
         rankSaveSystem.SaveRank(rank, currentStageNumber);
 
-        ShowStars(starCount);
+        OnRankDecided?.Invoke(rank);
+
+        //ShowStars(starCount);
     }
 
-    private int GetItemCount()
+
+    /// <summary>
+    /// ItemManagerから取得済みGem数を取得する
+    /// </summary>
+    private int GetCollectedGemCount()
     {
         return itemManager.CollectedGemCount;
     }

@@ -545,6 +545,60 @@ MonoBehaviour:
   - {fileID: 1105050321}
   - {fileID: 1064109580}
   - {fileID: 281352307}
+--- !u!1 &127344031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127344032}
+  - component: {fileID: 127344033}
+  m_Layer: 0
+  m_Name: RankUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &127344032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127344031}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1897140043}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127344033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127344031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9294b343b94f60e4b8c8510f94028f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RankUI
+  rankManager: {fileID: 1897140042}
+  stars:
+  - {fileID: 798180247}
+  - {fileID: 205695573}
+  - {fileID: 80077580}
+  starOutlines:
+  - {fileID: 1171381562}
+  - {fileID: 2040843631}
+  - {fileID: 441258861}
+  rankSetText: {fileID: 1882390414}
 --- !u!4 &136895704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6664202303114339708, guid: 912804593ce28e647b6602c2857f1fa6, type: 3}
@@ -2773,7 +2827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &810160086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13504,18 +13558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54182abcfe8da584fa761eea73e0d446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  stars:
-  - {fileID: 798180247}
-  - {fileID: 205695573}
-  - {fileID: 80077580}
-  starOutlines:
-  - {fileID: 1171381562}
-  - {fileID: 2040843631}
-  - {fileID: 441258861}
   itemManager: {fileID: 1592295882}
   rankSaveSystem: {fileID: 2092214139}
   currentStageNumber: 1
-  rankSetText: {fileID: 1882390414}
 --- !u!4 &1897140043
 Transform:
   m_ObjectHideFlags: 0
@@ -13530,6 +13575,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2092214140}
+  - {fileID: 127344032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909250869
