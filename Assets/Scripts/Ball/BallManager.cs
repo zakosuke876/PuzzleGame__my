@@ -58,6 +58,17 @@ public class BallManager : MonoBehaviour
     {
         switch (state)
         {
+            case GameState.GameClear:
+
+                if (currentBall != null)
+                {
+                    // ゴール到達時はボールをその場で停止
+                    currentBall.DisablePhysics();
+                }
+
+                break;
+
+
             case GameState.Reset:
 
                 if (currentBall != null)
