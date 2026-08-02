@@ -16301,6 +16301,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.6
       objectReference: {fileID: 0}
@@ -16886,6 +16890,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.6
@@ -25066,6 +25074,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.6

@@ -1166,7 +1166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (8)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1678,7 +1678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (2)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3297,7 +3297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (3)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3390,7 +3390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (1)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5179,7 +5179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (7)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5390,7 +5390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (6)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11913,7 +11913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (5)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12424,7 +12424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623951280325299621, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: m_Name
-      value: DisappearingBlock (4)
+      value: DisappearingBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

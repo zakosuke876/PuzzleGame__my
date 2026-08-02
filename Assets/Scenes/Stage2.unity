@@ -188,6 +188,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
       objectReference: {fileID: 0}
@@ -448,6 +452,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
@@ -1805,6 +1813,66 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -16, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -15, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -14, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -13, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -12, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -11, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -1, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -2655,7 +2723,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 15209657919ce7b4aa2545356e31a7c8, type: 2}
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: ed5d0c7d8bbdeea43ac37cf3bf8db28c, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: f94c63b108a56454783998a9b8f45691, type: 2}
   - m_RefCount: 14
     m_Data: {fileID: 11400000, guid: fba5db098ad4a364cbecc79f4f0d379e, type: 2}
@@ -2668,12 +2736,12 @@ Tilemap:
     m_Data: {fileID: -1549717192, guid: 0e199325ccd4242429396b9293d2404d, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 1488965707, guid: 0e199325ccd4242429396b9293d2404d, type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 9
     m_Data: {fileID: -2096233810, guid: 0e199325ccd4242429396b9293d2404d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300050, guid: 6ac8826a0440c4b4a9bcb4371a8ee08d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 203
+  - m_RefCount: 209
     m_Data:
       e00: 1
       e01: 0
@@ -2692,7 +2760,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 203
+  - m_RefCount: 209
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -3094,6 +3162,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 140574382}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &265574461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 140574382}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &269359392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3142,6 +3221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
@@ -3868,6 +3951,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 1.5
       objectReference: {fileID: 0}
@@ -4038,6 +4125,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
       objectReference: {fileID: 0}
@@ -4176,6 +4267,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
@@ -4389,6 +4484,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
@@ -4702,7 +4801,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0340e57903d09d34ab7b9b4a14fc2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlockManager
-  blocks: []
+  blocks:
+  - {fileID: 716903977}
+  - {fileID: 872258391}
+  - {fileID: 1089802142}
+  - {fileID: 644899932}
+  - {fileID: 1722874546}
+  - {fileID: 2068266701}
+  - {fileID: 1058340524}
+  - {fileID: 265574461}
+  - {fileID: 1328296257}
+  - {fileID: 1581450411}
+  - {fileID: 1780541164}
+  - {fileID: 883870862}
+  - {fileID: 1990899476}
+  - {fileID: 797219261}
+  - {fileID: 1328904851}
 --- !u!4 &524185599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
@@ -4961,6 +5075,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
       objectReference: {fileID: 0}
@@ -5062,6 +5180,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 575782583}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &644899932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 575782583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &650012575
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5694,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712431563}
   m_CullTransparentMesh: 1
+--- !u!114 &716903977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 382818326}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &767972161
 GameObject:
   m_ObjectHideFlags: 0
@@ -5810,6 +5950,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797219261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 192799829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &830379008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6155,6 +6306,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 1.5
       objectReference: {fileID: 0}
@@ -6172,6 +6327,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 872258389}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &872258391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 872258389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &872712009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6221,6 +6387,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
       objectReference: {fileID: 0}
@@ -6233,6 +6403,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+--- !u!114 &883870862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 872712009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!4 &899667092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
@@ -6290,6 +6471,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 1.5
@@ -6879,6 +7064,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 1839917936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1058340524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 1839917936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &1084456048
 GameObject:
   m_ObjectHideFlags: 0
@@ -7080,6 +7276,17 @@ MonoBehaviour:
   - {fileID: 1886643557}
   - {fileID: 272960454}
   rankSetText: {fileID: 2033470621}
+--- !u!114 &1089802142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 1539591534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &1099040718
 GameObject:
   m_ObjectHideFlags: 0
@@ -7817,6 +8024,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2592565797639410937, guid: 4eaa5dd277045bd4ebd034796fbd4cbf, type: 3}
   m_PrefabInstance: {fileID: 554869254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1328296257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 2073527181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
+--- !u!114 &1328904851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 902847885}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &1382851829
 GameObject:
   m_ObjectHideFlags: 0
@@ -8488,6 +8717,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 1.5
       objectReference: {fileID: 0}
@@ -8649,6 +8882,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 1810680859}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1581450411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 1810680859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &1582163247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9212,6 +9456,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 392653283}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1722874546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 392653283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &1733314626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9450,6 +9705,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 429600604}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780541164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 429600604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &1802433747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9632,6 +9898,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
@@ -9921,6 +10191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
@@ -10924,6 +11198,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 269359392}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1990899476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 269359392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1 &1996312630
 GameObject:
   m_ObjectHideFlags: 0
@@ -17106,6 +17391,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3053948913109023510, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
   m_PrefabInstance: {fileID: 456145843}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2068266701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+  m_PrefabInstance: {fileID: 456145843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efc7a7872fcba545ae61e3043315d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisappearingBlock
 --- !u!1001 &2073527181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17154,6 +17450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6942e866c4221f14ba9f3a935fdd7983, type: 3}
     - target: {fileID: 7930272873155976764, guid: 795fa96956726f045a2860c3ec413dac, type: 3}
       propertyPath: disappearTIme
       value: 0.5
