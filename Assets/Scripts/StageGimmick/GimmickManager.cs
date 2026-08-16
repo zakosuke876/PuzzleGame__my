@@ -19,10 +19,12 @@ public class GimmickManager : MonoBehaviour
         resetManagers.Clear();
 
         // 子オブジェクト内のIGimmickManager実装を全て取得して登録
-        managers.AddRange(GetComponentsInChildren<IGimmickManager>());
+        managers.AddRange(
+            GetComponentsInChildren<IGimmickManager>());
 
-        // 子オブジェクト内のIResettabler実装を全て取得して登録
-        resetManagers.AddRange(GetComponentsInChildren<IResettable>());
+        // 子オブジェクト内のIResettable実装を全て取得して登録
+        resetManagers.AddRange(
+            GetComponentsInChildren<IResettable>());
 
         // 二重購読防止
         GameManager.Instance.OnStateChanged -= HandleStateChange;
