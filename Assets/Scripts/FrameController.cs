@@ -1,19 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class FrameController : MonoBehaviour
 {
-    [SerializeField] private List<Image> frames = new List<Image>();
-
+    // 現在選択中のインデックス
     private int selectedIndex = 0;
+    
+    // 線タックできる数(範囲チェック用。FrameViewから受け取る)
+    private int frameCount = 0;
+
+    /// <summary>
+    /// 選択が変わった時に発火するイベント
+    /// </summary>
+    public event System.Action<int> OnSelectedChanged;
+
+    /// <summary>
+    /// 範囲内チェックに使うフレーム数を外部から設定する
+    /// </summary>
+    public void SetFrameCount(int count)
+    {
+        frameCount = count;
+    }
 
     private void Start()
     {
         selectedIndex = 0;
-
-        UpdateFrame();
+        OnSelectedChanged?.Invoke(selectedIndex);
     }
 
     private void Update()
@@ -25,30 +37,18 @@ public class FrameController : MonoBehaviour
         {
             selectedIndex--;
 
-            // リストの先頭を越えた場合末尾に戻る
-            if (selectedIndex < 0) selectedIndex = frames.Count - 1;
-            UpdateFrame();
+            // 先頭を越えたら末尾へ戻る
+            if (selectedIndex < 0) selectedIndex = frameCount - 1;
+            OnSelectedChanged?.Invoke(selectedIndex);
         }
 
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
         {
             selectedIndex++;
 
-            // リストの末尾を超えた場合先頭に戻る
-            if (selectedIndex >= frames.Count) selectedIndex = 0;
-            UpdateFrame();
-        }
-    }
-
-    /// <summary>
-    /// 選択中の枠だけを表示,他は非表示にする
-    /// </summary>
-    private void UpdateFrame()
-    {
-        for (int i = 0; i < frames.Count; i++)
-        {
-            // iが選択中インデックスと一致する枠だけ表示
-            frames[i].enabled = (i == selectedIndex);
+            // 末尾を越えたら先頭へ戻る
+            if (selectedIndex >= frameCount) selectedIndex = 0;
+            OnSelectedChanged?.Invoke(selectedIndex);
         }
     }
 }
