@@ -12,12 +12,12 @@ public class FloorControl : MonoBehaviour, IControllable
 
     private void OnEnable()
     {
-        frameController.OnSelectedChanged += HandleChanged;
+        //frameController.OnSelectedChanged += HandleChanged;
     }
 
     private void OnDisable()
     {
-        frameController.OnSelectedChanged -= HandleChanged;
+        //frameController.OnSelectedChanged -= HandleChanged;
     }
 
     private void HandleChanged(int index)
