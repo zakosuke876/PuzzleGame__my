@@ -10,10 +10,21 @@ public class MoveFloor : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 0f;
 
+    [SerializeField] private float upRange;
+
+    [SerializeField] private float downRange;
+
+    private float startY;
+
     // 移動方向を受け取る
     private float moveDir;
-    
-    private void FixedUpdate()
+
+    private void Awake()
+    {
+        startY = rb.position.y;
+    }
+
+    /*private void FixedUpdate()
     {
         // 0の場合処理しない
         if (moveDir == 0) return;
@@ -23,6 +34,24 @@ public class MoveFloor : MonoBehaviour
 
         // 移動できる範囲を制限
         target.y = Mathf.Clamp(target.y, minPosY, maxPosY);
+
+        // 物理と同期して移動
+        rb.MovePosition(target);
+
+        // 方向をリセット
+        moveDir = 0f;
+    }*/
+
+    private void FixedUpdate()
+    {
+        // 0の場合処理しない
+        if (moveDir == 0) return;
+
+        // 移動先を計算
+        Vector2 target = rb.position + Vector2.up * (moveDir * moveSpeed * Time.fixedDeltaTime);
+
+        // 移動できる範囲を制限
+        target.y = Mathf.Clamp(target.y, startY - downRange, startY + upRange);
 
         // 物理と同期して移動
         rb.MovePosition(target);
