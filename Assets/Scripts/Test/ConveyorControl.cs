@@ -6,26 +6,6 @@ public class ConveyorControl : MonoBehaviour, IControllable
 {
     [SerializeField] private List<Conveyor> conveyors = new List<Conveyor>();
 
-    /*[SerializeField] private FrameController frameController;
-
-    [SerializeField] private int myIndex = 0;
-
-    private void OnEnable()
-    {
-        frameController.OnSelectedChanged += HandleChanged;
-    }
-
-    private void OnDisable()
-    {
-        frameController.OnSelectedChanged -= HandleChanged;
-    }
-
-    private void HandleChanged(int index)
-    {
-        isSelected = (myIndex == index);
-    }*/
-
-
     // åªç›ëIëÇ≥ÇÍÇƒÇ¢ÇÈÇ©
     private bool isSelected = false;
 

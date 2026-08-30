@@ -6,25 +6,6 @@ public class FloorControl : MonoBehaviour, IControllable
 {
     [SerializeField] private List<MoveFloor> floors = new List<MoveFloor>();
 
-    [SerializeField] private FrameController frameController;
-
-    [SerializeField] private int myIndex = 1;
-
-    private void OnEnable()
-    {
-        //frameController.OnSelectedChanged += HandleChanged;
-    }
-
-    private void OnDisable()
-    {
-        //frameController.OnSelectedChanged -= HandleChanged;
-    }
-
-    private void HandleChanged(int index)
-    {
-        isSelected = (myIndex == index);
-    }
-
     // 現在選択されているか
     private bool isSelected = false;
 
@@ -38,18 +19,22 @@ public class FloorControl : MonoBehaviour, IControllable
 
     private void Update()
     {
+        Debug.Log("認識");
         // 選択されていない、または入力が無ければ処理しない
         if (!isSelected || Keyboard.current == null) return;
+        Debug.Log($"{name} 選択中 floors={floors.Count}");
 
         float direction = 0;
 
         if (Keyboard.current.wKey.isPressed)
         {
+            Debug.Log("上");
             direction = 1;
         }
 
         if (Keyboard.current.sKey.isPressed)
         {
+            Debug.Log("下");
             direction = -1;
         }
 

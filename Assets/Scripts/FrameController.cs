@@ -6,7 +6,7 @@ public class FrameController : MonoBehaviour
     // 現在選択中のインデックス
     private int selectedIndex = 0;
     
-    // 線タックできる数(範囲チェック用。FrameViewから受け取る)
+    // 選択できる数(範囲チェック用。FrameViewから受け取る)
     private int frameCount = 0;
 
     /// <summary>
