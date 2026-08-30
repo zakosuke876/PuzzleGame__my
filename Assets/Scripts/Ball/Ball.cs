@@ -127,7 +127,7 @@ public class Ball : MonoBehaviour
         // 上側から触れた場合
         bool hitFromUp = contact.normal.y > 0.7f;
 
-        if (collision.gameObject.TryGetComponent(out Conveyor conveyor))
+        if (collision.collider.gameObject.TryGetComponent(out Conveyor conveyor))
         {
             if (hitFromUp)
             {
@@ -136,7 +136,7 @@ public class Ball : MonoBehaviour
         }
 
         // Trapに接触した場合はゲームオーバー
-        if (collision.gameObject.CompareTag(Tags.Trap))
+        if (collision.collider.gameObject.CompareTag(Tags.Trap))
         {
             // イベント発火済みに変更
             isDead = true;
@@ -146,7 +146,7 @@ public class Ball : MonoBehaviour
         }
 
         // 消えるブロックに接触した場合
-        if (collision.gameObject.TryGetComponent(out DisappearingBlock block))
+        if (collision.collider.gameObject.TryGetComponent(out DisappearingBlock block))
         {
             if (hitFromUp)
             {
@@ -158,7 +158,7 @@ public class Ball : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         // コンベアから離れた場合コンベア参照を解除
-        if (collision.gameObject.TryGetComponent(out Conveyor conveyor))
+        if (collision.collider.gameObject.TryGetComponent(out Conveyor conveyor))
         {
             // 乗っていたコンベアと一致する場合のみ解除
             if (conveyor == currentConveyor)
