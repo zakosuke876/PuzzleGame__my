@@ -37,6 +37,7 @@ public class GemUI : MonoBehaviour
     /// </summary>
     private void InitializeGemColor()
     {
+        Debug.Log("èIóπ");
         foreach (var gemImage in gemImages)
         {
             gemImage.color = Color.black;
