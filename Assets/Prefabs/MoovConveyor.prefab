@@ -105,8 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e673918a15f323c40ab898691014764c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveFloor
+  rb: {fileID: 0}
   maxPosY: 0
   minPosY: 0
+  moveSpeed: 0
+  upRange: 0
+  downRange: 0
 --- !u!60 &4688263865694764470
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +206,6 @@ GameObject:
   - component: {fileID: 335303137960058219}
   - component: {fileID: 2376138880026087477}
   - component: {fileID: 8148644043772095965}
-  - component: {fileID: 4931701581114043464}
   m_Layer: 0
   m_Name: ConveyorBelt
   m_TagString: ConveyorBelt
@@ -349,16 +352,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 13.52, y: 3.74}
   m_EdgeRadius: 0
---- !u!114 &4931701581114043464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376622917970419295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7542f7d0978216943acd217f3f99294b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConveyorController
-  gridManager: {fileID: 0}
