@@ -4,14 +4,12 @@ public class MoveFloor : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
-    [SerializeField] private float maxPosY = 0;
-
-    [SerializeField] private float minPosY = 0;
-
     [SerializeField] private float moveSpeed = 0f;
 
+    // 開始位置から上に動ける距離
     [SerializeField] private float upRange;
 
+    // 開始位置から下に動ける距離
     [SerializeField] private float downRange;
 
     private float startY;
@@ -23,24 +21,6 @@ public class MoveFloor : MonoBehaviour
     {
         startY = rb.position.y;
     }
-
-    /*private void FixedUpdate()
-    {
-        // 0の場合処理しない
-        if (moveDir == 0) return;
-
-        // 移動先を計算
-        Vector2 target = rb.position + Vector2.up * (moveDir * moveSpeed * Time.fixedDeltaTime);
-
-        // 移動できる範囲を制限
-        target.y = Mathf.Clamp(target.y, minPosY, maxPosY);
-
-        // 物理と同期して移動
-        rb.MovePosition(target);
-
-        // 方向をリセット
-        moveDir = 0f;
-    }*/
 
     private void FixedUpdate()
     {
