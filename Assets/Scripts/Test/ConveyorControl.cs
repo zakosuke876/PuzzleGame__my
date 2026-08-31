@@ -6,6 +6,11 @@ public class ConveyorControl : MonoBehaviour, IControllable
 {
     [SerializeField] private List<Conveyor> conveyors = new List<Conveyor>();
 
+    // コンベア向き変更時に鳴らす効果音
+    [SerializeField] private AudioClip audioClip;
+    private AudioSource audioSource;
+    [Header("SEの音量"), SerializeField] private float volume = 1f;
+
     // 現在選択されているか
     private bool isSelected = false;
 
@@ -17,6 +22,11 @@ public class ConveyorControl : MonoBehaviour, IControllable
         isSelected = selected;
     }
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         // 選択されていない、または入力が無ければ処理しない
@@ -26,12 +36,18 @@ public class ConveyorControl : MonoBehaviour, IControllable
         {
             // 左向きに設定
             SetDirection(false);
+
+            // 効果音を鳴らす
+            audioSource.PlayOneShot(audioClip, volume);
         }
 
         if (Keyboard.current.dKey.wasPressedThisFrame)
         {
             // 右向きに設定
             SetDirection(true);
+
+            // 効果音を鳴らす
+            audioSource.PlayOneShot(audioClip, volume);
         }
     }
 
